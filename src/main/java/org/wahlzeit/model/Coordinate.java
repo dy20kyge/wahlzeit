@@ -53,4 +53,8 @@ public class Coordinate{
 	public double getZ() {
 		return this.z;
 	}
+	
+	boolean isEqual(Coordinate compCoordinate) {
+		return this.x == compCoordinate.x && this.y == compCoordinate.y && this.z == compCoordinate.z;
+	}
 }
