@@ -22,4 +22,18 @@ public class LocationTest{
 		assertTrue(c0.isEqual(c1));
 	}
 	
+	@Test
+	public void testDistance() {
+		Coordinate c0 = new Coordinate(0, 0, 1);
+		Coordinate c1 = new Coordinate(0, 0, 0);
+		assertEquals(c0.getDistance(c1), 1);
+	}
+	
+	@Test
+	public void testDistance2() {
+		Coordinate c0 = new Coordinate(2, 2, 1);
+		Coordinate c1 = new Coordinate(0, 0, 0);
+		assertEquals(c0.getDistance(c1), 3);
+	}
+	
 }
