@@ -26,7 +26,7 @@ public class LocationTest{
 	public void testDistance() {
 		Coordinate c0 = new Coordinate(0, 0, 1);
 		Coordinate c1 = new Coordinate(0, 0, 0);
-		assertEquals(c0.getDistance(c1), 1.0);
+		assertTrue(c0.getDistance(c1) == 1.0);
 	}
 	
 	@Test
