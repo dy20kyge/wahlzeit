@@ -1,6 +1,6 @@
 package org.wahlzeit.model;
 
-import org.junit.Test;
+import org.junit.*;
 
 public class LocationTest{
 	
