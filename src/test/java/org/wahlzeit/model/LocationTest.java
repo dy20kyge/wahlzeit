@@ -1,6 +1,7 @@
 package org.wahlzeit.model;
 
 import org.junit.*;
+import static org.junit.Assert.assertEquals;
 
 public class LocationTest{
 	
