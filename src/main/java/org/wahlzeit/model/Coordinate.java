@@ -68,6 +68,6 @@ public class Coordinate{
 		double xDist = (this.x - distCoordinate.x)*(this.x - distCoordinate.x);
 		double yDist = (this.y - distCoordinate.y)*(this.y - distCoordinate.y);
 		double zDist = (this.z - distCoordinate.z)*(this.z - distCoordinate.z);
-		return math.sqrt(xDist + yDist + zDist);
+		return Math.sqrt(xDist + yDist + zDist);
 	}
 }
