@@ -26,14 +26,14 @@ public class LocationTest{
 	public void testDistance() {
 		Coordinate c0 = new Coordinate(0, 0, 1);
 		Coordinate c1 = new Coordinate(0, 0, 0);
-		assertEquals(c0.getDistance(c1), 1);
+		assertEquals(c0.getDistance(c1), 1.0);
 	}
 	
 	@Test
 	public void testDistance2() {
 		Coordinate c0 = new Coordinate(2, 2, 1);
 		Coordinate c1 = new Coordinate(0, 0, 0);
-		assertEquals(c0.getDistance(c1), 3);
+		assertEquals(c0.getDistance(c1), 3.0);
 	}
 	
 }
