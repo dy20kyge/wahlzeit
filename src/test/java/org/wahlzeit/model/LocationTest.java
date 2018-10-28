@@ -33,7 +33,7 @@ public class LocationTest{
 	public void testDistance2() {
 		Coordinate c0 = new Coordinate(2, 2, 1);
 		Coordinate c1 = new Coordinate(0, 0, 0);
-		assertEquals(c0.getDistance(c1), 3.0);
+		assertTrue(c0.getDistance(c1) ==3.0);
 	}
 	
 }
