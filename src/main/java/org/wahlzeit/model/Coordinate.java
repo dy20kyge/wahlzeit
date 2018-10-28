@@ -60,6 +60,10 @@ public class Coordinate{
 		return this.x == compCoordinate.x && this.y == compCoordinate.y && this.z == compCoordinate.z;
 	}
 	
+	public boolean equals(Coordinate c) {
+		return this.isEqual(c);
+	}
+	
 	public double getDistance(Coordinate distCoordinate) {
 		double xDist = (this.x - distCoordinate.x)*(this.x - distCoordinate.x);
 		double yDist = (this.y - distCoordinate.y)*(this.y - distCoordinate.y);
