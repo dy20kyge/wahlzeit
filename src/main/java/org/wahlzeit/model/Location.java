@@ -23,4 +23,5 @@ public class Location{
 	public boolean equals(Location loc) {
 		return this.coordinate.isEqual(loc.coordinate);
 	}
+	
 }
