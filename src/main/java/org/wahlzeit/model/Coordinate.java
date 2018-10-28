@@ -1,6 +1,8 @@
 
 package org.wahlzeit.model;
 
+
+
 public class Coordinate{
 	
 	/**
@@ -54,7 +56,14 @@ public class Coordinate{
 		return this.z;
 	}
 	
-	boolean isEqual(Coordinate compCoordinate) {
+	public boolean isEqual(Coordinate compCoordinate) {
 		return this.x == compCoordinate.x && this.y == compCoordinate.y && this.z == compCoordinate.z;
+	}
+	
+	public double getDistance(Coordinate distCoordinate) {
+		double xDist = (this.x - distCoordinate.x)*(this.x - distCoordinate.x);
+		double yDist = (this.y - distCoordinate.y)*(this.y - distCoordinate.y);
+		double zDist = (this.z - distCoordinate.z)*(this.z - distCoordinate.z);
+		return math.sqrt(xDist + yDist + zDist);
 	}
 }
