@@ -12,7 +12,14 @@ public class Coordinate{
 	protected double y;
 	protected double z;
 
-	
+	public Coordinate() {
+		
+	}
+	public Coordinate(double xVal, double yVal, double zVal) {
+		this.x = xVal;
+		this.y = yVal;
+		this.z = zVal;
+	}
 	
 	/**
 	 * @methodtype set
