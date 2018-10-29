@@ -63,6 +63,9 @@ public class Coordinate{
 		return this.z;
 	}
 	
+	/**
+	 * TODO check double values
+	 */
 	public boolean isEqual(Coordinate compCoordinate) {
 		return this.x == compCoordinate.x && this.y == compCoordinate.y && this.z == compCoordinate.z;
 	}
@@ -70,7 +73,9 @@ public class Coordinate{
 	public boolean equals(Coordinate c) {
 		return this.isEqual(c);
 	}
-	
+	/**
+	 * TODO check null values before methond, check overflows
+	 */
 	public double getDistance(Coordinate distCoordinate) {
 		double xDist = (this.x - distCoordinate.x)*(this.x - distCoordinate.x);
 		double yDist = (this.y - distCoordinate.y)*(this.y - distCoordinate.y);
