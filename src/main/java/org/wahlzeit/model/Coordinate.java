@@ -13,6 +13,10 @@ public class Coordinate{
 	protected double z;
 
 	public Coordinate() {
+		this.x = 0;
+		this.y = 0;
+		this.z = 0;
+		
 		
 	}
 	public Coordinate(double xVal, double yVal, double zVal) {
