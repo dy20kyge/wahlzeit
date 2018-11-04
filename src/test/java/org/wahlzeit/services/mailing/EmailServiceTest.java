@@ -57,4 +57,19 @@ public class EmailServiceTest {
 			Assert.fail("Silent mode does not allow exceptions");
 		}
 	}
+	
+	@Test
+	public void testSendMail() {
+		try {
+			emailService.sendEmail(validAddress, null, "this", "that");
+			emailService.sendEmail(null, validAddress, null, "body");
+			
+		} catch (MailingException e) {
+			assertTrue(true);
+		} catch (Exception e) {
+			Assert.fail("No defined Exception");
+		}
+		assertTrue(true);
+		
+	}
 }

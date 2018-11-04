@@ -26,6 +26,8 @@ import org.wahlzeit.main.ServiceMain;
  *
  */
 public class EmailServiceManager {
+	
+	protected EmailService defaultService = null;
 
 	/**
 	 *
@@ -56,10 +58,7 @@ public class EmailServiceManager {
 		return getInstance().doGetDefaultService();
 	}
 
-	/**
-	 *
-	 */
-	protected EmailService defaultService = null;
+
 
 	/**
 	 *
