@@ -84,6 +84,17 @@ public class EmailAddressTest extends TestCase {
 	protected EmailAddress createEmailAddress(String s) {
 		return EmailAddress.getFromString(s);
 	}
+	
+	public void testIsEqual() {
+		EmailAddress ea = createEmailAddress("hallo@adap.de");
+		EmailAddress ea2 = createEmailAddress("hallo@adap.de");
+		EmailAddress ea3 = createEmailAddress("hallo@bdap.de");
+		assertTrue(ea.isEqual(ea));
+		assertTrue(ea.isEqual(ea2));
+		assertFalse(ea.isEqual(ea3));
+		
+		
+	}
 
 }
 
