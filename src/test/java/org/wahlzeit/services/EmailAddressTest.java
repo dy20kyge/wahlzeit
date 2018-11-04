@@ -20,7 +20,10 @@
 
 package org.wahlzeit.services;
 
+import org.junit.*;
 import junit.framework.TestCase;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Test cases for the EmailAddress class.
@@ -64,6 +67,22 @@ public class EmailAddressTest extends TestCase {
 	 */
 	public void testEmptyEmailAddress() {
 		assertFalse(EmailAddress.EMPTY.isValid());
+	}
+	
+	//Works more or less, because invalids are allowed for local testing...
+	public void testEmailAddressIsValid() {
+		assertTrue(createEmailAddress("peter@maier.de").isValid());
+		assertTrue(createEmailAddress("petermaier.de").isValid());
+	}
+	
+	public void testAddressIsEmpty() {
+		assertTrue(createEmailAddress("").isEmpty());
+		assertFalse(createEmailAddress("peter@maier.de").isEmpty());
+		assertFalse(createEmailAddress("petermaierde").isEmpty());
+	}
+	
+	protected EmailAddress createEmailAddress(String s) {
+		return EmailAddress.getFromString(s);
 	}
 
 }
