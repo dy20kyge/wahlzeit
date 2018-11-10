@@ -29,4 +29,23 @@ public class LogoPhoto extends Photo {
 	 */
 	protected String coutry;
 	
+	/*
+	 * basic constructor, barely does anything
+	 */
+	public LogoPhoto() {
+		
+	}
+	
+	/*
+	 * full constructor
+	 */
+	public LogoPhoto(boolean real, String sport, String leag, String leagShort, String cit, String contry) {
+		this.realTeam = real;
+		this.sports = sport;
+		this.league = leag;
+		this.leagueShort = leagShort;
+		this.city = cit;
+		this.country = contry;
+	}
+	
 }
