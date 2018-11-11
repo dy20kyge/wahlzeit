@@ -4,6 +4,10 @@ package org.wahlzeit.model;
 import java.util.*;
 
 public class LogoPhoto extends Photo {
+	/*
+	 * team name
+	 */
+	protected String name;
 	
 	/*
 	 * true if it is the Logo of an actual team, false if it is a fantasy one
@@ -48,8 +52,9 @@ public class LogoPhoto extends Photo {
 	/**	
 	* @methodtype constructor
 	*/
-	public LogoPhoto(boolean inRealTeam, String inSports, String inLeague,
+	public LogoPhoto(String inName, boolean inRealTeam, String inSports, String inLeague,
 			String inLeagueShort, String inCity, String inCountry, int inYear) {
+		this.name = inName;
 		this.realTeam = inRealTeam;
 		this.sports = inSports;
 		this.league = inLeague;
@@ -61,7 +66,14 @@ public class LogoPhoto extends Photo {
 	
 	/*
 	 * public setters
-	 *
+	 */
+	/**
+	 * @methodtype set
+	 */
+	public void setName(String inName) {
+		this.name = inName;
+	}
+	 /**
 	 * @methodtype set
 	 */
 	public void setRealTeam(boolean value) {
@@ -121,6 +133,16 @@ public class LogoPhoto extends Photo {
 	/*
 	 * public getters
 	 */
+	
+	/**
+	 * @methodtype get
+	 */
+	public String getName() {
+		if(this.name == null) {
+			return "not set";
+		}
+		return this.name;
+	}
 	/**	
 	* @methodtype get
 	*/
