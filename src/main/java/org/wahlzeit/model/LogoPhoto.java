@@ -30,6 +30,11 @@ public class LogoPhoto extends Photo {
 	protected String coutry;
 	
 	/*
+	 * the year the logo was designed
+	 */
+	protected int year;
+	
+	/*
 	 * basic constructor, barely does anything
 	 */
 	public LogoPhoto() {
@@ -39,13 +44,78 @@ public class LogoPhoto extends Photo {
 	/*
 	 * full constructor
 	 */
-	public LogoPhoto(boolean real, String sport, String leag, String leagShort, String cit, String contry) {
-		this.realTeam = real;
-		this.sports = sport;
-		this.league = leag;
-		this.leagueShort = leagShort;
-		this.city = cit;
-		this.country = contry;
+	public LogoPhoto(boolean inRealTeam, String inSports, String inLeague,
+			String inLeagueShort, String inCity, String cinCountry, int inYear) {
+		this.realTeam = inRealTeam;
+		this.sports = inSports;
+		this.league = inLeague;
+		this.leagueShort = inLeagueShort;
+		this.city = inCity;
+		this.country = inCountry;
+		this.year = inYear;
 	}
+	
+	/*
+	 * public setters
+	 */
+	public void setRealTeam(boolean value) {
+		this.realTeam = value;
+	}
+	
+	public void setSports(String inSport) {
+		this.sports = inSport;
+	}
+	
+	public void setLeague(String inLeague) {
+		this.league = inLeague;
+	}
+	
+	public void setLeagueShort(String inLeagueShort) {
+		this.leagueShort = inLeagueShort;
+	}
+	
+	public void setCity(String inCity) {
+		this.city = inCity;
+	}
+	
+	public void setCountry(String inCountry) {
+		this.country = inCountry
+	}
+	
+	public void setYear(int inYear) {
+		this.year = inYear;
+	}
+	
+	/*
+	 * public getters
+	 */
+	public boolean isRealTeam() {
+		return this.realTeam;
+	}
+	
+	public String getSports() {
+		return this.sports;
+	}
+	
+	public String getLeague() {
+		return this.league
+	}
+	
+	public String getLeagueShort() {
+		return this.leagueShort;
+	}
+	
+	public String getCity() {
+		return this.city;
+	}
+	
+	public String getCountry() {
+		return this.country;
+	}
+	
+	public int getYear() {
+		return this.year;
+	}
+				
 	
 }
