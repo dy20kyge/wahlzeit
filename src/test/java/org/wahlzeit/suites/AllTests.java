@@ -28,10 +28,6 @@ import org.junit.runners.*;
     org.wahlzeit.services.EmailAddressTest.class,
     org.wahlzeit.services.LogBuilderTest.class,
     
-
-
-
-
     
     org.wahlzeit.utils.StringUtilTest.class,
     org.wahlzeit.utils.VersionTest.class
