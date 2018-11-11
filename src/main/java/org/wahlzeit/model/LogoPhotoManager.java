@@ -76,7 +76,7 @@ public class LogoPhotoManager extends PhotoManager{
 						imageStorage.writeImage(image, photoIdAsString, photoSize.asInt());
 					}
 				} catch (Exception e) {
-					log.warning(LogBuilder.createSystemMessage().
+					super.log.warning(LogBuilder.createSystemMessage().
 							addException("Problem when storing image", e).toString());
 					moreSizesExist = false;
 				}
