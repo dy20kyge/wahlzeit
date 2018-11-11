@@ -124,9 +124,9 @@ public class LogoPhotoManager extends PhotoManager{
 	 */
 	public LogoPhoto createPhoto(String filename, Image uploadedImage) throws Exception {
 		PhotoId id = PhotoId.getNextId();
-		LogoPhoto result = PhotoUtil.createPhoto(filename, id, uploadedImage);
+		Photo result = PhotoUtil.createPhoto(filename, id, uploadedImage);
 		addPhoto(result);
-		return result;
+		return (LogoPhoto) result;
 	}
 
 	/**
