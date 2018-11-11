@@ -60,8 +60,5 @@ public class LogoPhotoFactory extends PhotoFactory {
 	public LogoPhoto loadPhoto(PhotoId id) {
 		return null;
 	}
-	
-	
-	
-	
+
 }
