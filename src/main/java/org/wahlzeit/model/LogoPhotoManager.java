@@ -59,7 +59,8 @@ public class LogoPhotoManager extends PhotoManager{
 	 * the Datastore, it is simply not persisted.
 	 */
 	@Override
-	protected void saveScaledImages(LogoPhoto photo) {
+	protected void saveScaledImages(Photo photo) {
+		photo = (LogoPhoto) photo;
 		String photoIdAsString = photo.getId().asString();
 		ImageStorage imageStorage = ImageStorage.getInstance();
 		PhotoSize photoSize;
