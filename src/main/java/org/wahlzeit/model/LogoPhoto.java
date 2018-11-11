@@ -36,18 +36,18 @@ public class LogoPhoto extends Photo {
 	 */
 	protected int year;
 	
-	/*
-	 * basic constructor, barely does anything
-	 */
+	/**	
+	* @methodtype constructor
+	*/
 	public LogoPhoto() {
 		this.realTeam = false;
 		this.year = 0;
 		
 	}
 	
-	/*
-	 * full constructor
-	 */
+	/**	
+	* @methodtype constructor
+	*/
 	public LogoPhoto(boolean inRealTeam, String inSports, String inLeague,
 			String inLeagueShort, String inCity, String inCountry, int inYear) {
 		this.realTeam = inRealTeam;
@@ -61,31 +61,50 @@ public class LogoPhoto extends Photo {
 	
 	/*
 	 * public setters
+	 *
+	 * @methodtype set
 	 */
 	public void setRealTeam(boolean value) {
 		this.realTeam = value;
 	}
-	
+	/**	
+	* @methodtype set
+	*/
 	public void setSports(String inSport) {
 		this.sports = inSport;
 	}
 	
+	/**	
+	* @methodtype set
+	*/
 	public void setLeague(String inLeague) {
 		this.league = inLeague;
 	}
 	
+	/**	
+	* @methodtype set
+	*/
 	public void setLeagueShort(String inLeagueShort) {
 		this.leagueShort = inLeagueShort;
 	}
 	
+	/**	
+	* @methodtype set
+	*/
 	public void setCity(String inCity) {
 		this.city = inCity;
 	}
 	
+	/**	
+	* @methodtype set
+	*/
 	public void setCountry(String inCountry) {
 		this.country = inCountry;
 	}
 	
+	/**	
+	* @methodtype set
+	*/
 	public void setYear(int inYear) {
 		int currYear = Calendar.getInstance().get(Calendar.YEAR); //https://stackoverflow.com/questions/136419/get-integer-value-of-the-current-year-in-java
 		if(inYear > currYear || inYear < 0) {
@@ -98,10 +117,16 @@ public class LogoPhoto extends Photo {
 	/*
 	 * public getters
 	 */
+	/**	
+	* @methodtype get
+	*/
 	public boolean isRealTeam() {
 		return this.realTeam;
 	}
 	
+	/**	
+	* @methodtype get
+	*/
 	public String getSports() {
 		if(this.sports == null) {
 			return "not set";
@@ -109,6 +134,9 @@ public class LogoPhoto extends Photo {
 		return this.sports;
 	}
 	
+	/**	
+	* @methodtype get
+	*/
 	public String getLeague() {
 		if(this.league == null) {
 			return "not set";
@@ -123,6 +151,9 @@ public class LogoPhoto extends Photo {
 		return this.leagueShort;
 	}
 	
+	/**	
+	* @methodtype get
+	*/
 	public String getCity() {
 		if(this.city == null) {
 			return "not set";
@@ -130,6 +161,9 @@ public class LogoPhoto extends Photo {
 		return this.city;
 	}
 	
+	/**	
+	* @methodtype get
+	*/
 	public String getCountry() {
 		if(this.country == null) {
 			return "not set";
@@ -137,6 +171,9 @@ public class LogoPhoto extends Photo {
 		return this.country;
 	}
 	
+	/**	
+	* @methodtype get
+	*/
 	public int getYear() {
 		return this.year;
 	}
