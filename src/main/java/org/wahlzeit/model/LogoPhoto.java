@@ -85,7 +85,11 @@ public class LogoPhoto extends Photo {
 	* @methodtype set
 	*/
 	public void setLeagueShort(String inLeagueShort) {
-		this.leagueShort = inLeagueShort;
+		if(inLeagueShort.length() > 5) {
+			//do nothing
+		} else {
+			this.leagueShort = inLeagueShort;
+		}
 	}
 	
 	/**	
