@@ -1,7 +1,7 @@
 
 package org.wahlzeit.model;
 
-import java.util.Calendar.*;
+import java.util.*;
 
 public class LogoPhoto extends Photo {
 	
@@ -49,7 +49,7 @@ public class LogoPhoto extends Photo {
 	 * full constructor
 	 */
 	public LogoPhoto(boolean inRealTeam, String inSports, String inLeague,
-			String inLeagueShort, String inCity, String cinCountry, int inYear) {
+			String inLeagueShort, String inCity, String inCountry, int inYear) {
 		this.realTeam = inRealTeam;
 		this.sports = inSports;
 		this.league = inLeague;
