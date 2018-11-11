@@ -218,9 +218,7 @@ public class PhotoManager extends ObjectManager {
 		}
 	}
 
-	/**
-	 *
-	 */
+
 	public void savePhoto(Photo photo) {
 		updateObject(photo);
 	}
