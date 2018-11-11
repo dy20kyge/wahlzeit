@@ -1,6 +1,26 @@
 
 package org.wahlzeit.model;
 
+import com.google.appengine.api.images.Image;
+import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Work;
+import org.wahlzeit.model.persistence.ImageStorage;
+import org.wahlzeit.services.LogBuilder;
+import org.wahlzeit.services.ObjectManager;
+import org.wahlzeit.services.Persistent;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Logger;
+
 public class LogoPhotoManager extends PhotoManager{
 	
 	protected static final PhotoManager instance = new LogoPhotoManager();
