@@ -30,40 +30,6 @@ public class LogoPhotoManager extends PhotoManager{
 	public LogoPhotoManager() {
 		photoTagCollector = LogoPhotoFactory.getInstance().createPhotoTagCollector();
 	}
-	
-	/**
-	 * @methodtype command
-	 *
-	 * Loads all scaled Images of this Photo from Google Cloud Storage
-	 */
-	@Override
-	protected void loadScaledImages(LogoPhoto photo) {
-		String photoIdAsString = photo.getId().asString();
-		ImageStorage imageStorage = ImageStorage.getInstance();
-
-		for (PhotoSize photoSize : PhotoSize.values()) {
-			log.config(LogBuilder.createSystemMessage().
-					addAction("loading image").
-					addParameter("image size", photoSize.asString()).
-					addParameter("photo ID", photoIdAsString).toString());
-			if (imageStorage.doesImageExist(photoIdAsString, photoSize.asInt())) {
-				try {
-					Serializable rawImage = imageStorage.readImage(photoIdAsString, photoSize.asInt());
-					if (rawImage != null && rawImage instanceof Image) {
-						photo.setImage(photoSize, (Image) rawImage);
-					}
-				} catch (IOException e) {
-					log.warning(LogBuilder.createSystemMessage().
-							addParameter("size", photoSize.asString()).
-							addParameter("photo ID", photoIdAsString).
-							addException("Could not load image although it exists", e).toString());
-				}
-			} else {
-				log.config(LogBuilder.createSystemMessage().
-						addParameter("Size does not exist", photoSize.asString()).toString());
-			}
-		}
-	}
 
 	/**
 	 *
