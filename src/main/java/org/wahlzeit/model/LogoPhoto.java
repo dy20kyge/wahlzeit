@@ -1,6 +1,8 @@
 
 package org.wahlzeit.model;
 
+import java.util.Calendar.*;
+
 public class LogoPhoto extends Photo {
 	
 	/*
@@ -27,7 +29,7 @@ public class LogoPhoto extends Photo {
 	/*
 	 * the country the team is located in
 	 */
-	protected String coutry;
+	protected String country;
 	
 	/*
 	 * the year the logo was designed
