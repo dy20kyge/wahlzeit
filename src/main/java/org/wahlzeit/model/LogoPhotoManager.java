@@ -116,7 +116,7 @@ public class LogoPhotoManager extends PhotoManager{
 	 */
 	public LogoPhoto getVisiblePhoto(PhotoFilter filter) {
 		filter.generateDisplayablePhotoIds();
-		return getPhotoFromId(filter.getRandomDisplayablePhotoId());
+		return (logoPhoto) getPhotoFromId(filter.getRandomDisplayablePhotoId());
 	}
 
 	/**
