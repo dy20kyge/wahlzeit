@@ -116,7 +116,7 @@ public abstract class ModelMain extends AbstractMain {
 			//TODO: change to datastore/cloud storage
 			try {
 				Image image = getImageFromFile(photo);
-				Photo newPhoto = LogoPhotoManager.createPhoto(photo.getName(), image);
+				Photo newPhoto = photoManager.createPhoto(photo.getName(), image);
 				user.addPhoto(newPhoto);
 				userManager.addClient(user);
 			} catch (Exception e) {
