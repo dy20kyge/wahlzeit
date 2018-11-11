@@ -53,7 +53,7 @@ public class LogoPhotoFactory extends PhotoFactory {
 	 */
 	@Override
 	public LogoPhoto createPhoto(PhotoId id) {
-		return new Photo(id);
+		return (logoPhoto) new Photo(id);
 	}
 	
 	@Override
