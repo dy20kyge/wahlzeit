@@ -18,7 +18,7 @@ import org.junit.runners.*;
     org.wahlzeit.model.GuestTest.class,
     org.wahlzeit.model.LocationTest.class,
     org.wahlzeit.model.PhotoFilterTest.class,
-    //org.wahlzeit.model.PhotoTest.class,
+    org.wahlzeit.model.PhotoTest.class,
     org.wahlzeit.model.TagsTest.class,
     org.wahlzeit.model.UserStatusTest.class,
     org.wahlzeit.model.ValueTest.class,
@@ -27,6 +27,8 @@ import org.junit.runners.*;
     
     org.wahlzeit.services.EmailAddressTest.class,
     org.wahlzeit.services.LogBuilderTest.class,
+    
+
 
 
 
