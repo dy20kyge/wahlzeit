@@ -38,6 +38,8 @@ public class LogoPhoto extends Photo {
 	 * basic constructor, barely does anything
 	 */
 	public LogoPhoto() {
+		this.realTeam = false;
+		this.year = 0;
 		
 	}
 	
@@ -83,7 +85,12 @@ public class LogoPhoto extends Photo {
 	}
 	
 	public void setYear(int inYear) {
-		this.year = inYear;
+		int currYear = Calendar.getInstance().get(Calendar.YEAR); //https://stackoverflow.com/questions/136419/get-integer-value-of-the-current-year-in-java
+		if(inYear > currYear || inYear < 0) {
+			this.year = 0;
+		}else {
+			this.year = inYear;
+		}
 	}
 	
 	/*
@@ -94,22 +101,37 @@ public class LogoPhoto extends Photo {
 	}
 	
 	public String getSports() {
+		if(this.sports == null) {
+			return "not set";
+		}
 		return this.sports;
 	}
 	
 	public String getLeague() {
+		if(this.league == null) {
+			return "not set";
+		}
 		return this.league
 	}
 	
 	public String getLeagueShort() {
+		if(this.leagueShort == null) {
+			return "not set";
+		}
 		return this.leagueShort;
 	}
 	
 	public String getCity() {
+		if(this.city == null) {
+			return "not set";
+		}
 		return this.city;
 	}
 	
 	public String getCountry() {
+		if(this.country == null) {
+			return "not set";
+		}
 		return this.country;
 	}
 	
