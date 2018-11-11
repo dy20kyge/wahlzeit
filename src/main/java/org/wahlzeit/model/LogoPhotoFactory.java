@@ -12,7 +12,7 @@ public class LogoPhotoFactory extends PhotoFactory {
 	 * @methodtype constructor
 	 */
 	protected LogoPhotoFactory() {
-		super()
+		super();
 	}
 	
 	/*
@@ -32,7 +32,7 @@ public class LogoPhotoFactory extends PhotoFactory {
 	/**
 	 * @methodtype set
 	 */
-	protected static synchronized setInstance(LogoPhotoFactory lpf) {
+	protected static synchronized void setInstance(LogoPhotoFactory lpf) {
 		if (instance != null) {
 			throw new IllegalStateException("attempt to initalize PhotoFactory twice");
 		}
