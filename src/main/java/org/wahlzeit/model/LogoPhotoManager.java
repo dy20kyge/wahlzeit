@@ -35,7 +35,8 @@ public class LogoPhotoManager extends PhotoManager{
 	 *
 	 */
 	@Override
-	public void savePhoto(LogoPhoto photo) {
+	public void savePhoto(Photo photo) {
+		photo = (LogoPhoto) photo;
 		updateObject(photo);
 	}
 	
