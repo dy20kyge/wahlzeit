@@ -109,20 +109,7 @@ public class LogoPhotoManager extends PhotoManager{
 			writeObject(tag);
 		}
 	}
-
-	/**
-	 *
-	 */
-	public Set<LogoPhoto> findPhotosByOwner(String ownerName) {
-		Set<Photo> result = new HashSet<LogoPhoto>();
-		readObjects(result, LogoPhoto.class, LogoPhoto.OWNER_ID, ownerName);
-
-		for (Iterator<LogoPhoto> i = result.iterator(); i.hasNext(); ) {
-			doAddPhoto(i.next());
-		}
-
-		return result;
-	}
+	
 
 	/**
 	 *
