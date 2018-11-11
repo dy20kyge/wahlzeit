@@ -95,7 +95,8 @@ public class LogoPhotoManager extends PhotoManager{
 	 * the photo to the datastore.
 	 */
 	@Override
-	protected void updateTags(LogoPhoto photo) {
+	protected void updateTags(Photo photo) {
+		photo = (LogoPhoto) photo;
 		// delete all existing tags, for the case that some have been removed
 		deleteObjects(Tag.class, Tag.PHOTO_ID, photo.getId().asString());
 
