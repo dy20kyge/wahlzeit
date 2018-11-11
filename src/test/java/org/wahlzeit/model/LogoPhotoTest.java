@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 public class LogoPhotoTest{
 	
-	private Photo testPhoto;
+	private LogoPhoto testPhoto;
 	
 	
 	private static String AF = "American Football";
