@@ -81,7 +81,7 @@ public class LogoPhoto extends Photo {
 	}
 	
 	public void setCountry(String inCountry) {
-		this.country = inCountry
+		this.country = inCountry;
 	}
 	
 	public void setYear(int inYear) {
@@ -111,7 +111,7 @@ public class LogoPhoto extends Photo {
 		if(this.league == null) {
 			return "not set";
 		}
-		return this.league
+		return this.league;
 	}
 	
 	public String getLeagueShort() {
