@@ -39,7 +39,7 @@ public class LogoPhotoTest{
 		testPhoto.setYear(2018);
 		
 		assertEquals(testPhoto.getName(), JAX);
-		assertEquals(testPhoto.getRealTeam(), true);
+		assertEquals(testPhoto.isRealTeam(), true);
 		assertEquals(testPhoto.getSports(), AF);
 		assertEquals(testPhoto.getLeague(), NATIONAL);
 		assertEquals(testPhoto.getLeagueShort(), NFL);
@@ -51,10 +51,10 @@ public class LogoPhotoTest{
 	
 	@Test
 	public void testFullConstructor() {
-		Photo completeTestPhoto = new LogoPhoto(JAX, true, AF, NATIONAL, NFL, JV, USA, 2018);
+		LogoPhoto completeTestPhoto = new LogoPhoto(JAX, true, AF, NATIONAL, NFL, JV, USA, 2018);
 		
 		assertEquals(completeTestPhoto.getName(), JAX);
-		assertEquals(completeTestPhoto.getRealTeam(), true);
+		assertEquals(completeTestPhoto.isRealTeam(), true);
 		assertEquals(completeTestPhoto.getSports(), AF);
 		assertEquals(completeTestPhoto.getLeague(), NATIONAL);
 		assertEquals(completeTestPhoto.getLeagueShort(), NFL);
@@ -65,7 +65,7 @@ public class LogoPhotoTest{
 	
 	@Test
 	public void testInvalidValues() {
-		Photo test = new LogoPhoto();
+		LogoPhoto test = new LogoPhoto();
 		test.setLeagueShort("This is invalid!");
 		assertEquals(test.getLeagueShort(), "not set");
 		
@@ -75,10 +75,10 @@ public class LogoPhotoTest{
 	
 	@Test
 	public void testEmptyValues() {
-		Photo t = new LogoPhoto();
+		LogoPhoto t = new LogoPhoto();
 		
 		assertEquals(testPhoto.getName(), NOT);
-		assertEquals(testPhoto.getRealTeam(), false);
+		assertEquals(testPhoto.isRealTeam(), false);
 		assertEquals(testPhoto.getSports(), NOT);
 		assertEquals(testPhoto.getLeague(), NOT);
 		assertEquals(testPhoto.getLeagueShort(), NOT);
