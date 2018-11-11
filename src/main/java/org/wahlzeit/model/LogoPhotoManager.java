@@ -25,6 +25,8 @@ public class LogoPhotoManager extends PhotoManager{
 	
 	protected static final PhotoManager instance = new LogoPhotoManager();
 	
+	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
+	
 	protected Map<PhotoId, LogoPhoto> photoCache = new HashMap<PhotoId, LogoPhoto>();
 	
 	public LogoPhotoManager() {
@@ -76,7 +78,7 @@ public class LogoPhotoManager extends PhotoManager{
 						imageStorage.writeImage(image, photoIdAsString, photoSize.asInt());
 					}
 				} catch (Exception e) {
-					super.log.warning(LogBuilder.createSystemMessage().
+					log.warning(LogBuilder.createSystemMessage().
 							addException("Problem when storing image", e).toString());
 					moreSizesExist = false;
 				}
