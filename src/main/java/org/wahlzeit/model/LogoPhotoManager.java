@@ -111,14 +111,6 @@ public class LogoPhotoManager extends PhotoManager{
 	}
 
 	/**
-	 * @methodtype get
-	 */
-	@Override
-	public Map<PhotoId, LogoPhoto> getPhotoCache() {
-		return photoCache;
-	}
-
-	/**
 	 *
 	 */
 	public Set<LogoPhoto> findPhotosByOwner(String ownerName) {
