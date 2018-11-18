@@ -1,5 +1,7 @@
 package org.wahlzeit.model;
 
+import java.Math.*;
+
 public class SphericCoordinate implements Coordinate{
 	
 	protected double phi;

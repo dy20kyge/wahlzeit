@@ -1,7 +1,7 @@
 
 package org.wahlzeit.model;
 
-
+import java.Math.*;
 
 public class CartesianCoordinate implements Coordinate{
 	
