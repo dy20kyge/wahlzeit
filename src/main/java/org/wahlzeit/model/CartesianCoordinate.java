@@ -39,7 +39,7 @@ public class CartesianCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-			return getDistance(in_coor.asCartesianCoordinate());		
+			return getDistanceCartesian(in_coor.asCartesianCoordinate());		
 	}
 	
 	/**
@@ -149,7 +149,10 @@ public class CartesianCoordinate implements Coordinate{
 	/**
 	 * TODO check null values before methond, check overflows
 	 */
-	public double getDistance(Coordinate distCoordinate) {
+	public double getDistanceCartesian(CartesianCoordinate distCoordinate) {
+		if(distCoordinate == null){
+			throw new IllegalArgumentException("No Coordinate given!");
+		}
 		double xDist = (this.x - distCoordinate.x)*(this.x - distCoordinate.x);
 		double yDist = (this.y - distCoordinate.y)*(this.y - distCoordinate.y);
 		double zDist = (this.z - distCoordinate.z)*(this.z - distCoordinate.z);
