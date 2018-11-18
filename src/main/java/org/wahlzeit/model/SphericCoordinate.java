@@ -92,7 +92,7 @@ public class SphericCoordinate implements Coordinate{
 		}
 	}
 	
-	public void setTheta(in_theta) {
+	public void setTheta(double in_theta) {
 		if(in_theta >= 0 && in_theta <= 180) {
 			this.theta = in_theta;
 		}
