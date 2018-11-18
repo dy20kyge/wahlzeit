@@ -83,7 +83,7 @@ public class CartesianCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		return this.isEqual(asCartesianCoordinate(in_coor));
+		return this.isEqualCartesian(asCartesianCoordinate(in_coor));
 	}
 	
 	
@@ -134,7 +134,7 @@ public class CartesianCoordinate implements Coordinate{
 	/**
 	 * TODO check double values
 	 */
-	public boolean isEqual(Coordinate compCoordinate) {
+	public boolean isEqualCartesian(Coordinate compCoordinate) {
 		if(compCoordinate == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}

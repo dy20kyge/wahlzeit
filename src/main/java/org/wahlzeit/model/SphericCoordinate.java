@@ -1,7 +1,5 @@
 package org.wahlzeit.model;
 
-import java.Math.*;
-
 public class SphericCoordinate implements Coordinate{
 	
 	protected double phi;
@@ -79,7 +77,7 @@ public class SphericCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		return this.isEqual(asSphericCoordinate(in_coor));
+		return this.isEqualSpheric(asSphericCoordinate(in_coor));
 	}
 	
 	//Class methods
@@ -122,7 +120,7 @@ public class SphericCoordinate implements Coordinate{
 		return this.radius;
 	}
 	
-	public boolean isEqual(SphericCoordinate in_coor) {
+	public boolean isEqualSpheric(SphericCoordinate in_coor) {
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
