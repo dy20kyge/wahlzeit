@@ -38,7 +38,7 @@ public class CartesianCoordinate implements Coordinate{
 	 */
 	public double getCartesianDistance(Coordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 			return getDistance(asCartesianCoordinate(in_coor));		
 	}
@@ -58,7 +58,7 @@ public class CartesianCoordinate implements Coordinate{
 	 */
 	public double getCentralAngle(Coordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		SphericCoordinate sc = asSphericCoordinate(in_coor);
 		SphericCoordinate tc = asSphericCoordinate(this);
@@ -81,7 +81,7 @@ public class CartesianCoordinate implements Coordinate{
 	 */
 	public boolean isEqual(Coordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		return this.isEqual(asCartesianCoordinate(in_coor));
 	}
@@ -135,10 +135,16 @@ public class CartesianCoordinate implements Coordinate{
 	 * TODO check double values
 	 */
 	public boolean isEqual(Coordinate compCoordinate) {
+		if(compCoordinate == null){
+			throw new IllegalArgumentException("No Coordinate given!");
+		}
 		return this.x == compCoordinate.x && this.y == compCoordinate.y && this.z == compCoordinate.z;
 	}
 	
 	public boolean equals(Coordinate c) {
+		if(c == null){
+			throw new IllegalArgumentException("No Coordinate given!");
+		}
 		return this.isEqual(c);
 	}
 	/**

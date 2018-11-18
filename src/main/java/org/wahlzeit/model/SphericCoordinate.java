@@ -36,7 +36,7 @@ public class SphericCoordinate implements Coordinate{
 	 */
 	public double getCartesianDistance(Coordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		CartesianCoordinate cc = asCartesianCoordinate();
 			return cc.getDistance(asCartesianCoordinate(in_coor));		
@@ -54,7 +54,7 @@ public class SphericCoordinate implements Coordinate{
 	 */
 	public double getCentralAngle(Coordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		SphericCoordinate sc = asSphericCoordinate(in_coor);
 		if(this.radius != sc.radius) {
@@ -77,7 +77,7 @@ public class SphericCoordinate implements Coordinate{
 	 */
 	public boolean isEqual(Coordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		return this.isEqual(asSphericCoordinate(in_coor));
 	}
@@ -124,7 +124,7 @@ public class SphericCoordinate implements Coordinate{
 	
 	public boolean isEqual(SphericCoordinate in_coor) {
 		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!")
+			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		if(this.getRadius() == in_coor.getRadius() && this.getPhi() == in_coor.getPhi() && this.getTheta == in_coor.getTheta()) {
 			return true;
