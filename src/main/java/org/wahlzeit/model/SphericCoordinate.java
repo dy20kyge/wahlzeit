@@ -36,7 +36,7 @@ public class SphericCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		CartesianCoordinate cc = asCartesianCoordinate();
+		CartesianCoordinate cc = this.asCartesianCoordinate();
 			return cc.getDistance(in_coor.asCartesianCoordinate());		
 	}
 	
@@ -124,7 +124,7 @@ public class SphericCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		if(this.getRadius() == in_coor.getRadius() && this.getPhi() == in_coor.getPhi() && this.getTheta == in_coor.getTheta()) {
+		if(this.getRadius() == in_coor.getRadius() && this.getPhi() == in_coor.getPhi() && this.getTheta() == in_coor.getTheta()) {
 			return true;
 		}
 		else {
