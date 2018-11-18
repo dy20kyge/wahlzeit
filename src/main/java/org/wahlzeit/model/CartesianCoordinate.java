@@ -39,7 +39,7 @@ public class CartesianCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-			return getDistance(asCartesianCoordinate(in_coor));		
+			return getDistance(in_coor.asCartesianCoordinate());		
 	}
 	
 	/**
@@ -47,7 +47,7 @@ public class CartesianCoordinate implements Coordinate{
 	 */
 	public SphericCoordinate asSphericCoordinate() {
 		double radius = Math.sqrt(this.x*this.x + this.y*this.y + this.z*this.z);
-		double theta = Math.arcos(this.z/radius);
+		double theta = Math.acos(this.z/radius);
 		double phi = Math.atan2(this.y, this.x);
 		return new SphericCoordinate(phi, theta, radius);
 	}
@@ -59,9 +59,9 @@ public class CartesianCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		SphericCoordinate sc = asSphericCoordinate(in_coor);
-		SphericCoordinate tc = asSphericCoordinate(this);
-		if(this.radius != sc.radius) {
+		SphericCoordinate sc = in_coor.asSphericCoordinate();
+		SphericCoordinate tc = this.asSphericCoordinate();
+		if(tc.radius != sc.radius) {
 			return 0;
 		}
 		
@@ -82,7 +82,7 @@ public class CartesianCoordinate implements Coordinate{
 		if(in_coor == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		return this.isEqualCartesian(asCartesianCoordinate(in_coor));
+		return this.isEqualCartesian(in_coor.asCartesianCoordinate());
 	}
 	
 	
@@ -133,11 +133,11 @@ public class CartesianCoordinate implements Coordinate{
 	/**
 	 * TODO check double values
 	 */
-	public boolean isEqualCartesian(Coordinate compCoordinate) {
+	public boolean isEqualCartesian(CartesianCoordinate compCoordinate) {
 		if(compCoordinate == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
-		return this.x == compCoordinate.x && this.y == compCoordinate.y && this.z == compCoordinate.z;
+		return this.getX() == compCoordinate.getX() && this.getY() == compCoordinate.getY() && this.getZ() == compCoordinate.getZ();
 	}
 	
 	public boolean equals(Coordinate c) {

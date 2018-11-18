@@ -6,7 +6,7 @@ public class Location{
 	protected Coordinate coordinate;
 	
 	public Location(){
-		this.coordinate = new Coordinate();
+		
 	}
 	
 	public Location(Coordinate c) {
