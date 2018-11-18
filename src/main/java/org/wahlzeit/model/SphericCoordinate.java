@@ -37,7 +37,7 @@ public class SphericCoordinate implements Coordinate{
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
 		CartesianCoordinate cc = this.asCartesianCoordinate();
-			return cc.getDistance(in_coor.asCartesianCoordinate());		
+			return cc.getCartesianDistance(in_coor.asCartesianCoordinate());		
 	}
 	
 	/**
