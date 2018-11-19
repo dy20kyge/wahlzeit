@@ -8,6 +8,7 @@ import org.wahlzeit.model.Client;
 import org.wahlzeit.model.Globals;
 import org.wahlzeit.model.Guest;
 import org.wahlzeit.model.Moderator;
+import org.wahlzeit.model.LogoPhoto;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoCase;
 import org.wahlzeit.model.Tag;
@@ -25,6 +26,7 @@ public class OfyService {
 	 * Register all entities at startup
 	 */
 	static {
+		//factory().register(LogoPhoto.class);
 		factory().register(Photo.class);
 		factory().register(Globals.class);
 		factory().register(Tag.class);
