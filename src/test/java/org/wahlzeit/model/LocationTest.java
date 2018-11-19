@@ -11,7 +11,7 @@ public class LocationTest{
 		Location loc = new Location();
 		CartesianCoordinate c = new CartesianCoordinate(0, 0, 1);
 		loc.setCoordinate(c);
-		CartesianCoordinate check = loc.getCoordinate();
+		CartesianCoordinate check = (CartesianCoordinate) loc.getCoordinate();
 		assertEquals(check, c);
 	}
 	
@@ -26,14 +26,14 @@ public class LocationTest{
 	public void testDistance() {
 		CartesianCoordinate c0 = new CartesianCoordinate(0, 0, 1);
 		CartesianCoordinate c1 = new CartesianCoordinate(0, 0, 0);
-		assertTrue(c0.getDistance(c1) == 1.0);
+		assertTrue(c0.getCartesianDistance(c1) == 1.0);
 	}
 	
 	@Test
 	public void testDistance2() {
 		CartesianCoordinate c0 = new CartesianCoordinate(2, 2, 1);
 		CartesianCoordinate c1 = new CartesianCoordinate(0, 0, 0);
-		assertTrue(c0.getDistance(c1) ==3.0);
+		assertTrue(c0.getCartesianDistance(c1) ==3.0);
 	}
 	
 }
