@@ -38,10 +38,12 @@ public class LocationTest{
 	
 	@Test
 	public void asCartesianTest() {
-		CartesianCoordinate checkCoordinate = new CartesianCoordinate(1.0, 0.0, 0.0);
-		Coordinate test1 = new CartesianCoordinate(1.0, 0.0, 0.0);
-		Coordinate test2 = new SphericCoordinate(0.0, 0.0, 1.0);
+		CartesianCoordinate checkCoordinate = new CartesianCoordinate(0.0, 0.0, 1.0);
+		Coordinate test1 = new CartesianCoordinate(0.0, 0.0, 1.0);
+		Coordinate test2 = new SphericCoordinate(1.0, 0.0, 0.0);
 		assertTrue(checkCoordinate.isEqual(test1));
+		CartesianCoordinate test3 = test2.asCartesianCoordinate();
+		System.out.println(test3.getX());
 		assertTrue(checkCoordinate.isEqual(test2));
 	}
 	
