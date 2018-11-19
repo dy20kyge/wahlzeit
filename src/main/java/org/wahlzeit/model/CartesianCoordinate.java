@@ -2,7 +2,7 @@
 package org.wahlzeit.model;
 
 
-public class CartesianCoordinate implements Coordinate{
+public class CartesianCoordinate extends AbstractCoordinate{
 	
 	/**
 	 * Coordinate in cartesian coordinates

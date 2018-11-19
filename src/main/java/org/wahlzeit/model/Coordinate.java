@@ -3,10 +3,29 @@ package org.wahlzeit.model;
 
 public interface Coordinate{
 	
-	public CartesianCoordinate asCartesianCoordinate();
-	public double getCartesianDistance(Coordinate c);
-	public SphericCoordinate asSphericCoordinate();
-	public double getCentralAngle(Coordinate c);
-	public boolean isEqual(Coordinate c); 
+	/**
+	 * @methodtype get Returns the Coordinate as CartesianCoordinate
+	 */
+	CartesianCoordinate asCartesianCoordinate();
+	
+	/**
+	 * @methodtype get Returns the Coordinate as SphericCoordinate
+	 */
+	Returns the Coordinate as CartesianCoordinate
+	
+	/**
+	 * @methodtype get Returns the Cartesian Distance between two Coordinates
+	 */
+	double getCartesianDistance(Coordinate c);
+	
+	/**
+	 * @methodtype get Returns the central angle between two coordinates
+	 */
+	double getCentralAngle(Coordinate c);
+	
+	/**
+	 * @methodtype get Returns a boolean value regarding the equality of the coordinates
+	 */
+	boolean isEqual(Coordinate c); 
 	
 }
