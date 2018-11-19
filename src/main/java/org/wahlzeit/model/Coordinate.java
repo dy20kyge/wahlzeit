@@ -11,7 +11,7 @@ public interface Coordinate{
 	/**
 	 * @methodtype get Returns the Coordinate as SphericCoordinate
 	 */
-	Returns the Coordinate as CartesianCoordinate
+	SphericCoordinate asSphericCoordinate();
 	
 	/**
 	 * @methodtype get Returns the Cartesian Distance between two Coordinates
