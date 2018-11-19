@@ -150,12 +150,9 @@ public class CartesianCoordinate implements Coordinate{
 	 * TODO check null values before methond, check overflows
 	 */
 	public double getDistanceCartesian(CartesianCoordinate distCoordinate) {
-		if(distCoordinate == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
-		double xDist = (this.x - distCoordinate.x)*(this.x - distCoordinate.x);
-		double yDist = (this.y - distCoordinate.y)*(this.y - distCoordinate.y);
-		double zDist = (this.z - distCoordinate.z)*(this.z - distCoordinate.z);
+		double xDist = (this.getX() - distCoordinate.getX())*(this.getX() - distCoordinate.getX());
+		double yDist = (this.getY() - distCoordinate.getY())*(this.getY() - distCoordinate.getY());
+		double zDist = (this.getZ() - distCoordinate.getZ())*(this.getZ() - distCoordinate.getZ());
 		return Math.sqrt(xDist + yDist + zDist);
 	}
 }
