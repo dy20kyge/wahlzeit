@@ -29,16 +29,7 @@ public class SphericCoordinate extends AbstractCoordinate{
 		double z = this.radius * Math.cos(Math.toRadians(this.theta));
 		return new CartesianCoordinate(x, y, z);
 	}
-	/**
-	 * @methodtype get
-	 */
-	public double getCartesianDistance(Coordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
-		CartesianCoordinate cc = this.asCartesianCoordinate();
-			return cc.getCartesianDistance(in_coor.asCartesianCoordinate());		
-	}
+	
 	
 	/**
 	 * @methodtype get
@@ -47,28 +38,7 @@ public class SphericCoordinate extends AbstractCoordinate{
 		return this;
 	}
 	
-	/**
-	 * @methodtype get
-	 */
-	public double getCentralAngle(Coordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
-		SphericCoordinate sc = in_coor.asSphericCoordinate();
-		if(this.radius != sc.radius) {
-			return 0;
-		}
-		
-		double alpha_t = Math.cos(Math.toRadians(this.phi));
-		double alpha_o = Math.cos(Math.toRadians(sc.phi));
-		
-		double beta_t = Math.toRadians(this.theta);
-		double beta_o = Math.toRadians(sc.theta);
-		
-		return Math.acos((Math.cos(beta_t) * Math.cos(beta_o) * Math.cos(alpha_t - alpha_o))
-				+ (Math.sin(beta_t) * Math.sin(beta_o)));
-		
-	}
+	
 	
 	/**
 	 * @methodtype get
