@@ -109,4 +109,13 @@ public class LocationTest{
 		
 	}
 	
+	@Test
+	public void testGetCentralAngle() {
+		Coordinate sphericA = new SphericCoordinate(0.0, 0.0, 0.0);
+		Coordinate cartesianA = new CartesianCoordinate(0.0, 0.0, 0.0);
+		
+		assertTrue(sphericA.getCentralAngle(cartesianA) == 0);
+		assertTrue(cartesianA.getCentralAngle(sphericA) == 0);
+	}
+	
 }
