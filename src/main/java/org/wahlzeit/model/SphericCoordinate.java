@@ -14,9 +14,20 @@ public class SphericCoordinate extends AbstractCoordinate{
 	}
 	
 	public SphericCoordinate(double in_phi, double in_theta, double in_radius) {
+		//preconditions
+		super.assertArgumentDoubleNotNull(in_phi);
+		super.assertArgumentDoubleNotNull(in_theta);
+		super.assertArgumentDoubleNotNull(in_radius);
+		
+		//class invariants
+		assertClassInvariants();
+		
 		this.setPhi(in_phi);
 		this.setTheta(in_theta);
 		this.setRadius(in_radius);
+		
+		//class invariants
+		assertClassInvariants();
 	}
 	
 	//Interface Methods
@@ -44,38 +55,35 @@ public class SphericCoordinate extends AbstractCoordinate{
 	 * @methodtype get
 	 */
 	public boolean isEqual(Coordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+		//precondition
+		super.assertArgumentCoordinateNotNull(in_coor);
+		
 		return this.isEqualSpheric(in_coor.asSphericCoordinate());
 	}
 	
 	//Class methods
 	public void setPhi(double in_phi) {
-		if(in_phi >= -180 && in_phi <= 180) {
-			this.phi = in_phi;
-		}
-		else {
-			this.phi = 0.0;
-		}
+		//precondition
+		assertInRange(-180, 180, in_phi);
+		this.phi = in_phi;
 	}
 	
 	public void setTheta(double in_theta) {
-		if(in_theta >= 0 && in_theta <= 180) {
+		//precondition
+		assertInRange(0, 180, in_theta);
+		if(0.0 <= in_theta || 0.0 >= in_theta) {
+			//wenn man das weg laesst oder if(true) schreibt failen die tests...
+		
 			this.theta = in_theta;
 		}
-		else {
-			this.theta = 0.0;
-		}
+	
 	}
 	
 	public void setRadius(double in_radius) {
-		if(in_radius > 0) {
-			this.radius = in_radius;
-		}
-		else {
-			this.radius = 0.0;
-		}
+		//precondition
+		assertMoreThan(0, in_radius);
+		
+		this.radius = in_radius;
 	}
 	
 	public double getTheta() {
@@ -90,15 +98,54 @@ public class SphericCoordinate extends AbstractCoordinate{
 		return this.radius;
 	}
 	
-	public boolean isEqualSpheric(SphericCoordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+	private boolean isEqualSpheric(SphericCoordinate in_coor) {
+		//precondition
+		assertSphericCoordinate(in_coor);
+		
 		if(this.getRadius() == in_coor.getRadius() && this.getPhi() == in_coor.getPhi() && this.getTheta() == in_coor.getTheta()) {
 			return true;
 		}
 		else {
 			return false;
+		}
+	}
+	
+	/**
+	 * @methodtype assertion
+	 */
+	private void assertInRange(double min, double max, double val) {
+		if(val < min) {
+			throw new IllegalArgumentException("Value not in range");
+		}
+		if(val > max) {
+			throw new IllegalArgumentException("Value not in range");
+		}
+	}
+	
+	/**
+	 * @methodtype assertion
+	 */
+	private void assertMoreThan(double min, double val) {
+		if(val < min) {
+			throw new IllegalArgumentException("Value to small");
+		}
+	}
+	
+	/**
+	 * @methodtype assertion/invariant
+	 */
+	private void assertClassInvariants() {
+		assertInRange(-180, 180, this.phi);
+		assertInRange(0, 180, this.theta);
+		assertMoreThan(0, this.radius);
+	}
+	
+	/**
+	 * @methodtype assertion
+	 */
+	private void assertSphericCoordinate(Coordinate c) {
+		if(!(c instanceof SphericCoordinate)){
+			throw new IllegalArgumentException("No CartesianCoordinate given!");
 		}
 	}
 	

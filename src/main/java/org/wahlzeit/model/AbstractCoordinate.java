@@ -7,9 +7,10 @@ public abstract class AbstractCoordinate implements Coordinate{
 	 * @methodtype get
 	 */
 	public double getCartesianDistance(Coordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+		//preconditions
+		assertArgumentCoordinateNotNull(in_coor);
+
+		
 		CartesianCoordinate cc = this.asCartesianCoordinate();
 			return cc.getDistanceCartesian(in_coor.asCartesianCoordinate());		
 	}
@@ -18,9 +19,9 @@ public abstract class AbstractCoordinate implements Coordinate{
 	 * @methodtype get
 	 */
 	public double getCentralAngle(Coordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+		//preconditions
+		assertArgumentCoordinateNotNull(in_coor);
+		
 		SphericCoordinate tc = this.asSphericCoordinate();
 		SphericCoordinate sc = in_coor.asSphericCoordinate();
 		if(tc.radius != sc.radius) {
@@ -37,6 +38,24 @@ public abstract class AbstractCoordinate implements Coordinate{
 				+ (Math.sin(beta_t) * Math.sin(beta_o)));
 		
 	}
+	
+	/**
+	 * @methodtype assertion
+	 */
+	protected void assertArgumentCoordinateNotNull(Coordinate c) {
+		if(c == null){
+			throw new IllegalArgumentException("No Coordinate given!");
+		}
+	}
+	
+	protected void assertArgumentDoubleNotNull(Double d) {
+		if(d == null){
+			throw new IllegalArgumentException("No Double Value given!");
+		}
+	}
+	
+	
+	
 	
 	
 }

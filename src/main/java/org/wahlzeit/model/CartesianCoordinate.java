@@ -14,9 +14,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	public CartesianCoordinate() {
 		this.x = 0;
 		this.y = 0;
-		this.z = 0;
-		
-		
+		this.z = 0;	
 	}
 	
 	/**
@@ -36,8 +34,6 @@ public class CartesianCoordinate extends AbstractCoordinate{
 		return this;
 	}
 	
-	
-	
 	/**
 	 * @methodtype get
 	 */
@@ -48,18 +44,15 @@ public class CartesianCoordinate extends AbstractCoordinate{
 		return new SphericCoordinate(phi, theta, radius);
 	}
 	
-	
 	/**
 	 * @methodtype get
 	 */
 	public boolean isEqual(Coordinate in_coor) {
-		if(in_coor == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+		//preconditions
+		super.assertArgumentCoordinateNotNull(in_coor);
+		
 		return this.isEqualCartesian(in_coor.asCartesianCoordinate());
 	}
-	
-	
 	
 	//Class Methods
 	/**
@@ -107,10 +100,10 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * TODO check double values
 	 */
-	public boolean isEqualCartesian(CartesianCoordinate compCoordinate) {
-		if(compCoordinate == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+	private boolean isEqualCartesian(CartesianCoordinate compCoordinate) {
+		//preconditions
+		assertCartesianCoordinate(compCoordinate);
+		
 		return this.getX() == compCoordinate.getX() && this.getY() == compCoordinate.getY() && this.getZ() == compCoordinate.getZ();
 	}
 	
@@ -128,5 +121,11 @@ public class CartesianCoordinate extends AbstractCoordinate{
 		double yDist = (this.getY() - distCoordinate.getY())*(this.getY() - distCoordinate.getY());
 		double zDist = (this.getZ() - distCoordinate.getZ())*(this.getZ() - distCoordinate.getZ());
 		return Math.sqrt(xDist + yDist + zDist);
+	}
+	
+	protected void assertCartesianCoordinate(Coordinate c) {
+		if(!(c instanceof CartesianCoordinate)){
+			throw new IllegalArgumentException("No CartesianCoordinate given!");
+		}
 	}
 }
