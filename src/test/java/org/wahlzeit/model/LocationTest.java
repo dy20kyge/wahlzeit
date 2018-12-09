@@ -8,9 +8,8 @@ public class LocationTest{
 	
 	@Test
 	public void testSetAndGetCartesian() {
-		Location loc = new Location();
 		CartesianCoordinate c = new CartesianCoordinate(0, 0, 1);
-		loc.setCoordinate(c);
+		Location loc = new Location(c);
 		CartesianCoordinate check = (CartesianCoordinate) loc.getCoordinate();
 		assertEquals(check, c);
 	}
