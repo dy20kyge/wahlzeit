@@ -144,7 +144,7 @@ public class LogoPhoto extends Photo {
 	/**	
 	* @methodtype set
 	*/
-	public void setYear(int inYear) {
+	public void setYear(int inYear) throws IllegalArgumentException{
 		//precondition
 		assertArgumentNotNull(inYear);
 		
