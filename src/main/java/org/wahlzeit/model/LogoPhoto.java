@@ -2,8 +2,14 @@
 package org.wahlzeit.model;
 
 import java.util.*;
+import java.util.logging.Logger;
+import org.wahlzeit.services.LogBuilder;
 
 public class LogoPhoto extends Photo {
+	
+	//logger
+	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
+	
 	/*
 	 * team name
 	 */
@@ -53,18 +59,22 @@ public class LogoPhoto extends Photo {
 	* @methodtype constructor
 	*/
 	public LogoPhoto(String inName, boolean inRealTeam, String inSports, String inLeague,
-			String inLeagueShort, String inCity, String inCountry, int inYear) throws IllegalArgumentException{
+			String inLeagueShort, String inCity, String inCountry, int inYear){
 		
 		//preconditions arguments are checked in setters
-		
-		this.setName(inName);
-		this.setRealTeam(inRealTeam);
-		this.setSports(inSports);
-		this.setLeague(inLeague);
-		this.setLeagueShort(inLeagueShort);
-		this.setCity(inCity);
-		this.setCountry(inCountry);
-		this.setYear(inYear);
+		try {
+			this.setName(inName);
+			this.setRealTeam(inRealTeam);
+			this.setSports(inSports);
+			this.setLeague(inLeague);
+			this.setLeagueShort(inLeagueShort);
+			this.setCity(inCity);
+			this.setCountry(inCountry);
+			this.setYear(inYear); 
+		} catch (Exception e) {
+			log.warning(LogBuilder.createSystemMessage().
+					addException("Problem with photo creation", e).toString());
+		}
 	}
 	
 	/*
