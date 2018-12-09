@@ -1,6 +1,13 @@
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+import org.wahlzeit.services.LogBuilder;
+
 public class SphericCoordinate extends AbstractCoordinate{
+	
+	//logger
+	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
+		
 	
 	protected double phi;
 	protected double theta;
@@ -21,9 +28,15 @@ public class SphericCoordinate extends AbstractCoordinate{
 	 */
 	public SphericCoordinate(double in_phi, double in_theta, double in_radius) {
 		//preconditions
-		super.assertArgumentDoubleNotNull(in_phi);
-		super.assertArgumentDoubleNotNull(in_theta);
-		super.assertArgumentDoubleNotNull(in_radius);
+		try {
+			super.assertArgumentDoubleNotNull(in_phi);
+			super.assertArgumentDoubleNotNull(in_theta);
+			super.assertArgumentDoubleNotNull(in_radius);
+		} catch (IllegalArgumentException e) {
+			log.warning(LogBuilder.createSystemMessage().
+					addException("Problem SphericCoordinate creation", e).toString());
+			return;
+		}
 		
 		//class invariants
 		assertClassInvariants();
