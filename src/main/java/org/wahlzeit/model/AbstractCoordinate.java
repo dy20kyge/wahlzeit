@@ -56,6 +56,12 @@ public abstract class AbstractCoordinate implements Coordinate{
 		}
 	}
 	
+	protected void assertArgumentNotNull(Object o) {
+		if(o == null) {
+			throw new IllegalArgumentException("No argument provided!");
+		}
+	}
+	
 	
 	
 	
