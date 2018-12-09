@@ -1,8 +1,15 @@
 
 package org.wahlzeit.model;
 
+import java.util.logging.Logger;
+import org.wahlzeit.services.LogBuilder;
+
 
 public class CartesianCoordinate extends AbstractCoordinate{
+	
+	//logger
+	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
+		
 	
 	/**
 	 * Coordinate in cartesian coordinates
@@ -21,9 +28,14 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	 * @methodtype constructor
 	 */
 	public CartesianCoordinate(double xVal, double yVal, double zVal) {
-		this.x = xVal;
-		this.y = yVal;
-		this.z = zVal;
+		try {
+			this.setX(xVal);
+			this.setY(yVal);
+			this.setZ(zVal);
+		} catch (IllegalArgumentException e) {
+			log.warning(LogBuilder.createSystemMessage().
+					addException("Problem CartesianCoordinate creation", e).toString());
+		}
 	}
 	
 	//Methods for the interface
@@ -61,21 +73,30 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype set
 	 */
-	public void setX(double xValue) {
+	public void setX(double xValue) throws IllegalArgumentException {
+		//preconditions
+		super.assertArgumentNotNull(xValue);
+		
 		this.x = xValue;
 	}
 	
 	/**
 	 * @methodtype set
 	 */
-	public void setY(double yValue) {
+	public void setY(double yValue) throws IllegalArgumentException {
+		//preconditions
+		super.assertArgumentNotNull(yValue);
+		
 		this.y = yValue;
 	}
 	
 	/**
 	 * @methodtype set
 	 */
-	public void setZ(double zValue) {
+	public void setZ(double zValue) throws IllegalArgumentException {
+		//preconditions
+		super.assertArgumentNotNull(zValue);
+		
 		this.z = zValue;
 	}
 	
