@@ -6,6 +6,9 @@ public class SphericCoordinate extends AbstractCoordinate{
 	protected double theta;
 	protected double radius;
 	
+	/**
+	 * @methodtype constructor
+	 */
 	public SphericCoordinate() {
 		this.phi = 0.0;
 		this.theta = 0.0;
@@ -13,6 +16,9 @@ public class SphericCoordinate extends AbstractCoordinate{
 		
 	}
 	
+	/**
+	 * @methodtype constructor
+	 */
 	public SphericCoordinate(double in_phi, double in_theta, double in_radius) {
 		//preconditions
 		super.assertArgumentDoubleNotNull(in_phi);
@@ -34,6 +40,7 @@ public class SphericCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype get
 	 */
+	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
 		double x = this.radius * Math.sin(Math.toRadians(this.theta)) * Math.cos(Math.toRadians(this.phi));
 		double y = this.radius * Math.sin(Math.toRadians(this.theta)) * Math.sin(Math.toRadians(this.phi));
@@ -45,29 +52,38 @@ public class SphericCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype get
 	 */
+	@Override
 	public SphericCoordinate asSphericCoordinate() {
 		return this;
 	}
 	
-	
-	
 	/**
 	 * @methodtype get
 	 */
-	public boolean isEqual(Coordinate in_coor) {
+	@Override
+	public boolean isEqual(Coordinate in_coor) throws IllegalArgumentEyception{
 		//precondition
 		super.assertArgumentCoordinateNotNull(in_coor);
 		
-		return this.isEqualSpheric(in_coor.asSphericCoordinate());
+		SphericCoordinate sc = in_coor.asSphericCoordinate();
+		sc.assertClassInvariants();
+		
+		return this.isEqualSpheric(sc);
 	}
 	
 	//Class methods
+	/**
+	 * @methodtype set
+	 */
 	public void setPhi(double in_phi) {
 		//precondition
 		assertInRange(-180, 180, in_phi);
 		this.phi = in_phi;
 	}
 	
+	/**
+	 * @methodtype set
+	 */
 	public void setTheta(double in_theta) {
 		//precondition
 		assertInRange(0, 180, in_theta);
@@ -79,6 +95,9 @@ public class SphericCoordinate extends AbstractCoordinate{
 	
 	}
 	
+	/**
+	 * @methodtype set
+	 */
 	public void setRadius(double in_radius) {
 		//precondition
 		assertMoreThan(0, in_radius);
@@ -86,21 +105,31 @@ public class SphericCoordinate extends AbstractCoordinate{
 		this.radius = in_radius;
 	}
 	
+	/**
+	 * @methodtype get
+	 */
 	public double getTheta() {
 		return this.theta;
 	}
 	
+	/**
+	 * @methodtype get
+	 */
 	public double getPhi() {
 		return this.phi;
 	}
 	
+	/**
+	 * @methodtype get
+	 */
 	public double getRadius() {
 		return this.radius;
 	}
 	
+	/**
+	 * @methodtype get/helper
+	 */
 	private boolean isEqualSpheric(SphericCoordinate in_coor) {
-		//precondition
-		assertSphericCoordinate(in_coor);
 		
 		if(this.getRadius() == in_coor.getRadius() && this.getPhi() == in_coor.getPhi() && this.getTheta() == in_coor.getTheta()) {
 			return true;

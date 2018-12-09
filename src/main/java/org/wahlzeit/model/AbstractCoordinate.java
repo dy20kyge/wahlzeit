@@ -6,7 +6,8 @@ public abstract class AbstractCoordinate implements Coordinate{
 	/**
 	 * @methodtype get
 	 */
-	public double getCartesianDistance(Coordinate in_coor) {
+	@Override
+	public double getCartesianDistance(Coordinate in_coor) throws IllegalArgumentException{
 		//preconditions
 		assertArgumentCoordinateNotNull(in_coor);
 
@@ -18,7 +19,8 @@ public abstract class AbstractCoordinate implements Coordinate{
 	/**
 	 * @methodtype get
 	 */
-	public double getCentralAngle(Coordinate in_coor) {
+	@Override
+	public double getCentralAngle(Coordinate in_coor) throws IllegalArgumentException{
 		//preconditions
 		assertArgumentCoordinateNotNull(in_coor);
 		
@@ -42,13 +44,13 @@ public abstract class AbstractCoordinate implements Coordinate{
 	/**
 	 * @methodtype assertion
 	 */
-	protected void assertArgumentCoordinateNotNull(Coordinate c) {
+	protected void assertArgumentCoordinateNotNull(Coordinate c) throws IllegalArgumentException{
 		if(c == null){
 			throw new IllegalArgumentException("No Coordinate given!");
 		}
 	}
 	
-	protected void assertArgumentDoubleNotNull(Double d) {
+	protected void assertArgumentDoubleNotNull(Double d) throws IllegalArgumentException{
 		if(d == null){
 			throw new IllegalArgumentException("No Double Value given!");
 		}

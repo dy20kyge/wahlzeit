@@ -16,16 +16,16 @@ public interface Coordinate{
 	/**
 	 * @methodtype get Returns the Cartesian Distance between two Coordinates
 	 */
-	double getCartesianDistance(Coordinate c);
+	double getCartesianDistance(Coordinate c) throws IllegalArgumentException;
 	
 	/**
 	 * @methodtype get Returns the central angle between two coordinates
 	 */
-	double getCentralAngle(Coordinate c);
+	double getCentralAngle(Coordinate c) throws IllegalArgumentException;
 	
 	/**
 	 * @methodtype get Returns a boolean value regarding the equality of the coordinates
 	 */
-	boolean isEqual(Coordinate c); 
+	boolean isEqual(Coordinate c) throws IllegalArgumentException; 
 	
 }

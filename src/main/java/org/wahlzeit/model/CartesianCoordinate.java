@@ -30,6 +30,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype get
 	 */
+	@Override
 	public CartesianCoordinate asCartesianCoordinate() {
 		return this;
 	}
@@ -37,6 +38,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype get
 	 */
+	@Override
 	public SphericCoordinate asSphericCoordinate() {
 		double radius = Math.sqrt(this.x*this.x + this.y*this.y + this.z*this.z);
 		double theta = Math.acos(this.z/radius);
@@ -47,7 +49,8 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype get
 	 */
-	public boolean isEqual(Coordinate in_coor) {
+	@Override
+	public boolean isEqual(Coordinate in_coor) throws IllegalArgumentException{
 		//preconditions
 		super.assertArgumentCoordinateNotNull(in_coor);
 		
@@ -100,7 +103,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * TODO check double values
 	 */
-	private boolean isEqualCartesian(CartesianCoordinate compCoordinate) {
+	private boolean isEqualCartesian(CartesianCoordinate compCoordinate) throws IllegalArgumentException{
 		//preconditions
 		assertCartesianCoordinate(compCoordinate);
 		
@@ -108,22 +111,22 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	}
 	
 	public boolean equals(Coordinate c) {
-		if(c == null){
-			throw new IllegalArgumentException("No Coordinate given!");
-		}
+		super.assertArgumentCoordinateNotNull(c);
+		
 		return this.isEqual(c);
 	}
 	/**
 	 * TODO check null values before methond, check overflows
 	 */
-	public double getDistanceCartesian(CartesianCoordinate distCoordinate) {
+	
+	protected double getDistanceCartesian(CartesianCoordinate distCoordinate){
 		double xDist = (this.getX() - distCoordinate.getX())*(this.getX() - distCoordinate.getX());
 		double yDist = (this.getY() - distCoordinate.getY())*(this.getY() - distCoordinate.getY());
 		double zDist = (this.getZ() - distCoordinate.getZ())*(this.getZ() - distCoordinate.getZ());
 		return Math.sqrt(xDist + yDist + zDist);
 	}
 	
-	protected void assertCartesianCoordinate(Coordinate c) {
+	protected void assertCartesianCoordinate(Coordinate c) throws IllegalArgumentException{
 		if(!(c instanceof CartesianCoordinate)){
 			throw new IllegalArgumentException("No CartesianCoordinate given!");
 		}
