@@ -53,15 +53,18 @@ public class LogoPhoto extends Photo {
 	* @methodtype constructor
 	*/
 	public LogoPhoto(String inName, boolean inRealTeam, String inSports, String inLeague,
-			String inLeagueShort, String inCity, String inCountry, int inYear) {
-		this.name = inName;
-		this.realTeam = inRealTeam;
-		this.sports = inSports;
-		this.league = inLeague;
-		this.leagueShort = inLeagueShort;
-		this.city = inCity;
-		this.country = inCountry;
-		this.year = inYear;
+			String inLeagueShort, String inCity, String inCountry, int inYear) throws IllegalArgumentException{
+		
+		//preconditions arguments are checked in setters
+		
+		this.setName(inName);
+		this.setRealTeam(inRealTeam);
+		this.setSports(inSports);
+		this.setLeague(inLeague);
+		this.setLeagueShort(inLeagueShort);
+		this.setCity(inCity);
+		this.setCountry(inCountry);
+		this.setYear(inYear);
 	}
 	
 	/*
@@ -70,33 +73,47 @@ public class LogoPhoto extends Photo {
 	/**
 	 * @methodtype set
 	 */
-	public void setName(String inName) {
+	public void setName(String inName) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(inName);
+		
 		this.name = inName;
 	}
 	 /**
 	 * @methodtype set
 	 */
-	public void setRealTeam(boolean value) {
+	public void setRealTeam(boolean value) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(value);
+		
 		this.realTeam = value;
 	}
 	/**	
 	* @methodtype set
 	*/
-	public void setSports(String inSport) {
+	public void setSports(String inSport) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(inSport);
+		
 		this.sports = inSport;
 	}
 	
 	/**	
 	* @methodtype set
 	*/
-	public void setLeague(String inLeague) {
+	public void setLeague(String inLeague) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(inLeague);
 		this.league = inLeague;
 	}
 	
 	/**	
 	* @methodtype set
 	*/
-	public void setLeagueShort(String inLeagueShort) {
+	public void setLeagueShort(String inLeagueShort) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(inLeagueShort);
+		
 		if(inLeagueShort.length() > 5) {
 			//do nothing
 		} else {
@@ -107,14 +124,20 @@ public class LogoPhoto extends Photo {
 	/**	
 	* @methodtype set
 	*/
-	public void setCity(String inCity) {
+	public void setCity(String inCity) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(inCity); 
+		
 		this.city = inCity;
 	}
 	
 	/**	
 	* @methodtype set
 	*/
-	public void setCountry(String inCountry) {
+	public void setCountry(String inCountry) throws IllegalArgumentException{
+		//precondition
+		assertArgumentNotNull(inCountry);
+		
 		this.country = inCountry;
 	}
 	
@@ -122,6 +145,9 @@ public class LogoPhoto extends Photo {
 	* @methodtype set
 	*/
 	public void setYear(int inYear) {
+		//precondition
+		assertArgumentNotNull(inYear);
+		
 		int currYear = Calendar.getInstance().get(Calendar.YEAR); //https://stackoverflow.com/questions/136419/get-integer-value-of-the-current-year-in-java
 		if(inYear > currYear || inYear < 0) {
 			this.year = 0;
@@ -203,6 +229,14 @@ public class LogoPhoto extends Photo {
 	public int getYear() {
 		return this.year;
 	}
-				
+		
+	/**
+	 * @methodtype assertion
+	 */
+	private void assertArgumentNotNull(Object o) {
+		if(o == null) {
+			throw new IllegalArgumentException("No argument provided!");
+		}
+	}
 	
 }

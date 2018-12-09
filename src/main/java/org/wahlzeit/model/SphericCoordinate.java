@@ -61,7 +61,7 @@ public class SphericCoordinate extends AbstractCoordinate{
 	 * @methodtype get
 	 */
 	@Override
-	public boolean isEqual(Coordinate in_coor) throws IllegalArgumentEyception{
+	public boolean isEqual(Coordinate in_coor) throws IllegalArgumentException{
 		//precondition
 		super.assertArgumentCoordinateNotNull(in_coor);
 		
