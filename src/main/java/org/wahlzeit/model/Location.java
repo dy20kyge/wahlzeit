@@ -5,17 +5,20 @@ public class Location{
 	
 	protected Coordinate coordinate;
 	
-	public Location(){
+	private Location(){
 		
 	}
 	
-	public Location(Coordinate c) {
-		this.coordinate = c;
+	public Location(Coordinate c) throws IllegalArgumentException {
+		this.setCoordinate(c);
 	}
 	/**
 	 * @methodtype set
 	 */
-	public void setCoordinate(Coordinate c) {
+	public void setCoordinate(Coordinate c) throws IllegalArgumentException {
+		//precondition
+		assertArgumentNotNull(c);
+		
 		this.coordinate = c;
 	}
 	
@@ -26,8 +29,14 @@ public class Location{
 		return coordinate;
 	}
 	
-	public boolean equals(Location loc) {
+	public boolean equals(Location loc) throws IllegalArgumentException {
 		return this.coordinate.isEqual(loc.coordinate);
+	}
+	
+	private void assertArgumentNotNull(Object o) {
+		if(o == null) {
+			throw new IllegalArgumentException("No argument provided!");
+		}
 	}
 	
 }
