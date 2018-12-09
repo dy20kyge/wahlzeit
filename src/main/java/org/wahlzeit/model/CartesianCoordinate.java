@@ -8,8 +8,7 @@ import org.wahlzeit.services.LogBuilder;
 public class CartesianCoordinate extends AbstractCoordinate{
 	
 	//logger
-	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
-		
+	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());	
 	
 	/**
 	 * Coordinate in cartesian coordinates
