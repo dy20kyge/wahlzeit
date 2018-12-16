@@ -121,10 +121,77 @@ public class LocationTest{
 		origin = origin.setX(3);
 		assertTrue(origin.getX() == 3);
 		origin = origin.setY(3);
+		assertTrue(origin.getX() == 3);
 		assertTrue(origin.getY() == 3);
 		origin = origin.setZ(3);
+		assertTrue(origin.getX() == 3);
+		assertTrue(origin.getY() == 3);
 		assertTrue(origin.getZ() == 3);
 		
+	}
+	
+	@Test
+	public void testValuesSphericCoordinate() {
+		SphericCoordinate origin = new SphericCoordinate(0,0,0);
+		origin = origin.setPhi(90);
+		assertTrue(origin.getPhi() == 90);
+		origin = origin.setTheta(75);
+		assertTrue(origin.getPhi() == 90);
+		assertTrue(origin.getTheta() == 75);
+		origin = origin.setRadius(1);
+		assertTrue(origin.getPhi() == 90);
+		assertTrue(origin.getTheta() == 75);
+		assertTrue(origin.getRadius() == 1);
+	}
+	
+	@Test
+	public void testValueObjectCartesian() {
+		CartesianCoordinate origin = new CartesianCoordinate(0,0,0);
+		CartesianCoordinate altered;
+		
+		altered = origin.setX(3);
+		assertTrue(altered.getX() == 3);
+		assertTrue(origin.getX() == 0);
+		
+		altered = altered.setY(3);
+		assertTrue(altered.getX() == 3);
+		assertTrue(altered.getY() == 3);
+		assertTrue(origin.getX() == 0);
+		assertTrue(origin.getY() == 0);
+		
+		altered = altered.setZ(3);
+		assertTrue(altered.getX() == 3);
+		assertTrue(altered.getY() == 3);
+		assertTrue(altered.getZ() == 3);
+		assertTrue(origin.getX() == 0);
+		assertTrue(origin.getY() == 0);
+		assertTrue(origin.getZ() == 0);
+		
+		
+	}
+	
+	@Test
+	public void testValueObjectSpheric() {
+		SphericCoordinate origin = new SphericCoordinate(0,0,0);
+		SphericCoordinate altered;
+		
+		altered = origin.setPhi(90);
+		assertTrue(altered.getPhi() == 90);
+		assertTrue(origin.getPhi() == 0);
+		
+		altered = altered.setTheta(75);
+		assertTrue(altered.getPhi() == 90);
+		assertTrue(altered.getTheta() == 75);
+		assertTrue(origin.getPhi() == 0);
+		assertTrue(origin.getTheta() == 0);
+		
+		altered = altered.setRadius(1);
+		assertTrue(altered.getPhi() == 90);
+		assertTrue(altered.getTheta() == 75);
+		assertTrue(altered.getRadius() == 1);
+		assertTrue(origin.getPhi() == 0);
+		assertTrue(origin.getTheta() == 0);
+		assertTrue(origin.getRadius() == 0);
 	}
 	
 }
