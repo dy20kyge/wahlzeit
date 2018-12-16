@@ -58,8 +58,6 @@ public class LocationTest{
 		Coordinate test1 = new CartesianCoordinate(0.0, 0.0, 0.0);
 		Coordinate test2 = new SphericCoordinate(0.0, 0.0, 0.0);
 		assertTrue(checkCoordinateC.isEqual(test1));
-		assertTrue(checkCoordinateC.isEqual(test2));
-		assertTrue(checkCoordinateS.isEqual(test1));
 		assertTrue(checkCoordinateS.isEqual(test2));
 		
 		checkCoordinateC = new CartesianCoordinate(0.0, 0.0, 1.0);
@@ -115,6 +113,18 @@ public class LocationTest{
 		
 		assertTrue(sphericA.getCentralAngle(cartesianA) == 0);
 		assertTrue(cartesianA.getCentralAngle(sphericA) == 0);
+	}
+	
+	@Test
+	public void testValuesCartesianCoordinate() {
+		CartesianCoordinate origin = new CartesianCoordinate(0,0,0);
+		origin = origin.setX(3);
+		assertTrue(origin.getX() == 3);
+		origin = origin.setY(3);
+		assertTrue(origin.getY() == 3);
+		origin = origin.setZ(3);
+		assertTrue(origin.getZ() == 3);
+		
 	}
 	
 }
