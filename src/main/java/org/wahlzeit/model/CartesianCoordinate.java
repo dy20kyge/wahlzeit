@@ -57,8 +57,15 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	@Override
 	public SphericCoordinate asSphericCoordinate() {
 		double radius = Math.sqrt(this.x*this.x + this.y*this.y + this.z*this.z);
-		double theta = Math.acos(this.z/radius);
-		double phi = Math.atan2(this.y, this.x);
+		double theta;
+		double phi;
+		if(radius == 0.0) {
+			theta = 0.0;
+			phi = 0.0;
+		} else {
+			theta = Math.acos(this.z/radius);
+			phi = Math.atan2(this.y, this.x);
+		}
 		return new SphericCoordinate(phi, theta, radius);
 	}
 	
@@ -131,9 +138,9 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	 */
 	private boolean isEqualCartesian(CartesianCoordinate compCoordinate) throws IllegalArgumentException{
 		//preconditions
-		assertCartesianCoordinate(compCoordinate);
+		//assertCartesianCoordinate(compCoordinate);
 		
-		return this.getX() == compCoordinate.getX() && this.getY() == compCoordinate.getY() && this.getZ() == compCoordinate.getZ();
+		return (this.getX() == compCoordinate.getX() && this.getY() == compCoordinate.getY() && this.getZ() == compCoordinate.getZ());
 	}
 	
 	public boolean equals(Coordinate c) {
