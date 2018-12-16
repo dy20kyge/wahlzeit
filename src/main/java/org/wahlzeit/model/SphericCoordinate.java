@@ -88,34 +88,32 @@ public class SphericCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype set
 	 */
-	public void setPhi(double in_phi) {
+	public SphericCoordinate setPhi(double in_phi) {
 		//precondition
 		assertInRange(-180, 180, in_phi);
-		this.phi = in_phi;
+		
+		return new SphericCoordinate(in_phi, this.getTheta(), this.getRadius());
 	}
 	
 	/**
 	 * @methodtype set
 	 */
-	public void setTheta(double in_theta) {
+	public SphericCoordinate setTheta(double in_theta) {
 		//precondition
 		assertInRange(0, 180, in_theta);
-		if(0.0 <= in_theta || 0.0 >= in_theta) {
-			//wenn man das weg laesst oder if(true) schreibt failen die tests...
 		
-			this.theta = in_theta;
-		}
+		return new SphericCoordinate(this.getPhi(), in_theta, this.getRadius());
 	
 	}
 	
 	/**
 	 * @methodtype set
 	 */
-	public void setRadius(double in_radius) {
+	public SphericCoordinate setRadius(double in_radius) {
 		//precondition
 		assertMoreThan(0, in_radius);
 		
-		this.radius = in_radius;
+		return new SphericCoordinate(this.getPhi(), this.getTheta(), in_radius);
 	}
 	
 	/**
