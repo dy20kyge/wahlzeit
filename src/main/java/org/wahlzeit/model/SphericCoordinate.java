@@ -26,7 +26,7 @@ public class SphericCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype constructor
 	 */
-	public SphericCoordinate(double in_phi, double in_theta, double in_radius) {
+	public SphericCoordinate(double in_phi, double in_theta, double in_radius) throws IllegalArgumentException {
 		//preconditions
 		try {
 			super.assertArgumentDoubleNotNull(in_phi);
@@ -35,7 +35,7 @@ public class SphericCoordinate extends AbstractCoordinate{
 		} catch (IllegalArgumentException e) {
 			log.warning(LogBuilder.createSystemMessage().
 					addException("Problem SphericCoordinate creation", e).toString());
-			return;
+			throw e;
 		}
 		
 		//class invariants

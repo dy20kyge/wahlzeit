@@ -26,7 +26,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype constructor
 	 */
-	public CartesianCoordinate(double xVal, double yVal, double zVal) {
+	public CartesianCoordinate(double xVal, double yVal, double zVal) throws IllegalArgumentException{
 		try {
 			this.setX(xVal);
 			this.setY(yVal);
@@ -34,6 +34,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 		} catch (IllegalArgumentException e) {
 			log.warning(LogBuilder.createSystemMessage().
 					addException("Problem CartesianCoordinate creation", e).toString());
+			throw e;
 		}
 	}
 	
