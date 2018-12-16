@@ -38,12 +38,9 @@ public class SphericCoordinate extends AbstractCoordinate{
 			throw e;
 		}
 		
-		//class invariants
-		assertClassInvariants();
-		
-		this.setPhi(in_phi);
-		this.setTheta(in_theta);
-		this.setRadius(in_radius);
+		this.phi = in_phi;
+		this.theta = in_theta;
+		this.radius = in_radius;
 		
 		//class invariants
 		assertClassInvariants();
