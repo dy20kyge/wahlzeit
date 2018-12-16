@@ -13,9 +13,9 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * Coordinate in cartesian coordinates
 	 */
-	protected double x;
-	protected double y;
-	protected double z;
+	protected final double x;
+	protected final double y;
+	protected final double z;
 
 	public CartesianCoordinate() {
 		this.x = 0;
@@ -27,15 +27,19 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	 * @methodtype constructor
 	 */
 	public CartesianCoordinate(double xVal, double yVal, double zVal) throws IllegalArgumentException{
+		//precondition check and logging
 		try {
-			this.setX(xVal);
-			this.setY(yVal);
-			this.setZ(zVal);
+			assertArgumentNotNull(xVal);
+			assertArgumentNotNull(yVal);
+			assertArgumentNotNull(zVal);
 		} catch (IllegalArgumentException e) {
 			log.warning(LogBuilder.createSystemMessage().
 					addException("Problem CartesianCoordinate creation", e).toString());
 			throw e;
 		}
+		this.x = xVal;
+		this.y = yVal;
+		this.z = zVal;
 	}
 	
 	//Methods for the interface
@@ -73,31 +77,32 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype set
 	 */
-	public void setX(double xValue) throws IllegalArgumentException {
+	public CartesianCoordinate setX(double xValue) throws IllegalArgumentException {
 		//preconditions
 		super.assertArgumentNotNull(xValue);
 		
-		this.x = xValue;
+		return new CartesianCoordinate(xValue, this.getY(), this.getZ());
+		
 	}
 	
 	/**
 	 * @methodtype set
 	 */
-	public void setY(double yValue) throws IllegalArgumentException {
+	public CartesianCoordinate setY(double yValue) throws IllegalArgumentException {
 		//preconditions
 		super.assertArgumentNotNull(yValue);
 		
-		this.y = yValue;
+		return new CartesianCoordinate(this.getX(), yValue, this.getZ());
 	}
 	
 	/**
 	 * @methodtype set
 	 */
-	public void setZ(double zValue) throws IllegalArgumentException {
+	public CartesianCoordinate setZ(double zValue) throws IllegalArgumentException {
 		//preconditions
 		super.assertArgumentNotNull(zValue);
 		
-		this.z = zValue;
+		return new CartesianCoordinate(this.getX(), this.getY(), zValue);
 	}
 	
 	/**
@@ -147,7 +152,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 		return Math.sqrt(xDist + yDist + zDist);
 	}
 	
-	protected void assertCartesianCoordinate(Coordinate c) throws IllegalArgumentException{
+	protected void assertCartesianCoordinate(Coordinate c){
 		if(!(c instanceof CartesianCoordinate)){
 			throw new IllegalArgumentException("No CartesianCoordinate given!");
 		}
