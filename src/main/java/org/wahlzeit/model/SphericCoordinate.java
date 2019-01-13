@@ -2,12 +2,16 @@ package org.wahlzeit.model;
 
 import java.util.logging.Logger;
 import org.wahlzeit.services.LogBuilder;
+import org.wahlzeit.model.CartesianCoordinate;
+import java.util.*;
 
 public class SphericCoordinate extends AbstractCoordinate{
 	
 	//logger
 	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
 		
+	//HashMap
+	private static HashMap<Integer, SphericCoordinate> hm = new HashMap<Integer, SphericCoordinate>();
 	
 	protected double phi;
 	protected double theta;
@@ -16,34 +20,43 @@ public class SphericCoordinate extends AbstractCoordinate{
 	/**
 	 * @methodtype constructor
 	 */
-	public SphericCoordinate() {
-		this.phi = 0.0;
-		this.theta = 0.0;
-		this.radius = 0.0;
-		
-	}
-	
-	/**
-	 * @methodtype constructor
-	 */
-	public SphericCoordinate(double in_phi, double in_theta, double in_radius) throws IllegalArgumentException {
-		//preconditions
-		try {
-			super.assertArgumentDoubleNotNull(in_phi);
-			super.assertArgumentDoubleNotNull(in_theta);
-			super.assertArgumentDoubleNotNull(in_radius);
-		} catch (IllegalArgumentException e) {
-			log.warning(LogBuilder.createSystemMessage().
-					addException("Problem SphericCoordinate creation", e).toString());
-			throw e;
-		}
-		
+	private SphericCoordinate(double in_phi, double in_theta, double in_radius) {
 		this.phi = in_phi;
 		this.theta = in_theta;
 		this.radius = in_radius;
 		
 		//class invariants
 		assertClassInvariants();
+		
+	}
+	
+	/**
+	 * @methodtype get
+	 */
+	public static SphericCoordinate createSphericCoordinate(double in_phi, double in_theta, double in_radius) throws IllegalArgumentException {
+		//preconditions
+		try {
+			assertArgumentDoubleNotNull(in_phi);
+			assertArgumentDoubleNotNull(in_theta);
+			assertArgumentDoubleNotNull(in_radius);
+		} catch (IllegalArgumentException e) {
+			log.warning(LogBuilder.createSystemMessage().
+					addException("Problem SphericCoordinate creation", e).toString());
+			throw e;
+		}
+		
+		String hashThis = "Hash" + in_phi + ":" + in_theta + ":" + in_radius + "!";
+		int hashValue = hashThis.hashCode();
+		if(hm.containsKey(hashValue)) {
+			return hm.get(hashValue);
+		}
+		else {
+			hm.put(hashValue, new SphericCoordinate(in_phi, in_theta, in_radius));
+		}
+		
+		return hm.get(hashValue);
+		
+		
 	}
 	
 	//Interface Methods
@@ -55,7 +68,14 @@ public class SphericCoordinate extends AbstractCoordinate{
 		double x = this.radius * Math.sin(Math.toRadians(this.theta)) * Math.cos(Math.toRadians(this.phi));
 		double y = this.radius * Math.sin(Math.toRadians(this.theta)) * Math.sin(Math.toRadians(this.phi));
 		double z = this.radius * Math.cos(Math.toRadians(this.theta));
-		return new CartesianCoordinate(x, y, z);
+		CartesianCoordinate result = null;
+		try {
+			result = CartesianCoordinate.createCartesianCoordinate(x, y, z);
+		}
+		catch(IllegalArgumentException e) {
+			
+		}
+		return result;
 	}
 	
 	
@@ -132,6 +152,14 @@ public class SphericCoordinate extends AbstractCoordinate{
 	 */
 	public double getRadius() {
 		return this.radius;
+	}
+	
+	/**
+	 * @methodtype get
+	 */
+	public int hashCode() {
+		String toHash = "Hash" + getTheta() + ":" + getPhi() + ":" + getRadius() + "!";
+		return toHash.hashCode();
 	}
 	
 	/**
