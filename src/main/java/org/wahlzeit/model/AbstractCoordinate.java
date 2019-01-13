@@ -50,13 +50,13 @@ public abstract class AbstractCoordinate implements Coordinate{
 		}
 	}
 	
-	protected void assertArgumentDoubleNotNull(Double d) throws IllegalArgumentException{
+	protected static void assertArgumentDoubleNotNull(Double d) throws IllegalArgumentException{
 		if(d == null){
 			throw new IllegalArgumentException("No Double Value given!");
 		}
 	}
 	
-	protected void assertArgumentNotNull(Object o) {
+	protected static void assertArgumentNotNull(Object o) {
 		if(o == null) {
 			throw new IllegalArgumentException("No argument provided!");
 		}
