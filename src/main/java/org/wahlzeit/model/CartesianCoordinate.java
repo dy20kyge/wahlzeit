@@ -4,6 +4,7 @@ package org.wahlzeit.model;
 import java.util.logging.Logger;
 import org.wahlzeit.services.LogBuilder;
 import java.util.*;
+import org.wahlzeit.model.SphericCoordinate;
 
 
 public class CartesianCoordinate extends AbstractCoordinate{
@@ -77,7 +78,7 @@ public class CartesianCoordinate extends AbstractCoordinate{
 			theta = Math.acos(this.z/radius);
 			phi = Math.atan2(this.y, this.x);
 		}
-		return new SphericCoordinate(phi, theta, radius);
+		return SphericCoordinate.createSphericCoordinate(phi, theta, radius);
 	}
 	
 	/**
