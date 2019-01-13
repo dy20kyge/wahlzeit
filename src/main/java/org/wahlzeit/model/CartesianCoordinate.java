@@ -3,6 +3,7 @@ package org.wahlzeit.model;
 
 import java.util.logging.Logger;
 import org.wahlzeit.services.LogBuilder;
+import java.util.*;
 
 
 public class CartesianCoordinate extends AbstractCoordinate{
@@ -10,6 +11,8 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	//logger
 	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());	
 	
+	//HashMap
+	private static HashMap<Integer, CartesianCoordinate> hm = new HashMap<Integer, CartesianCoordinate>();
 	/**
 	 * Coordinate in cartesian coordinates
 	 */
@@ -17,16 +20,16 @@ public class CartesianCoordinate extends AbstractCoordinate{
 	protected final double y;
 	protected final double z;
 
-	public CartesianCoordinate() {
-		this.x = 0;
-		this.y = 0;
-		this.z = 0;	
+	private CartesianCoordinate(double xVal, double yVal, double zVal) {
+		this.x = xVal;
+		this.y = yVal;
+		this.z = zVal;	
 	}
 	
 	/**
 	 * @methodtype constructor
 	 */
-	public CartesianCoordinate(double xVal, double yVal, double zVal) throws IllegalArgumentException{
+	public static CartesianCoordinate createCartesianCoordinate(double xVal, double yVal, double zVal) throws IllegalArgumentException{
 		//precondition check and logging
 		try {
 			assertArgumentNotNull(xVal);
@@ -37,9 +40,17 @@ public class CartesianCoordinate extends AbstractCoordinate{
 					addException("Problem CartesianCoordinate creation", e).toString());
 			throw e;
 		}
-		this.x = xVal;
-		this.y = yVal;
-		this.z = zVal;
+		
+		String hashThis = "Hash" + xVal + ":" + yVal + ":" + zVal + "!";
+		int hashValue = hashThis.hashCode();
+		if(hm.containsKey(hashValue)) {
+			return hm.get(hashValue);
+		}
+		else {
+			hm.put(hashValue, new CartesianCoordinate(xVal, yVal, zVal));
+		}
+		
+		return hm.get(hashValue);
 	}
 	
 	//Methods for the interface
@@ -143,10 +154,23 @@ public class CartesianCoordinate extends AbstractCoordinate{
 		return (this.getX() == compCoordinate.getX() && this.getY() == compCoordinate.getY() && this.getZ() == compCoordinate.getZ());
 	}
 	
-	public boolean equals(Coordinate c) {
-		super.assertArgumentCoordinateNotNull(c);
+	/**
+	 * @methodtype get
+	 */
+	public boolean equals(Object c){
+		if( (c == null) || !(c instanceof CartesianCoordinate)) {
+			return false;
+		}
 		
-		return this.isEqual(c);
+		return this.isEqual((CartesianCoordinate) c);
+	}
+	
+	/**
+	 * @methodtype get
+	 */
+	public int hashCode() {
+		String toHash = "Hash" + getX() + ":" + getY() + ":" + getZ() + "!";
+		return toHash.hashCode();
 	}
 	/**
 	 * TODO check null values before methond, check overflows
