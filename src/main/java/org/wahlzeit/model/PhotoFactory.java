@@ -24,10 +24,10 @@ import org.wahlzeit.services.LogBuilder;
 
 import java.util.logging.Logger;
 
-@interface DesignPatternSingleton{
-		 String patternName = "Singleton";
-		 String[] participants = { "PhotoFactory"};
-}
+@PatternInstance(
+		 patternName = "Singleton",
+		 participants = { "PhotoFactory"}
+)
 
 
 /**

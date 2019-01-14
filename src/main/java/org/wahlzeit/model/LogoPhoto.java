@@ -5,10 +5,10 @@ import java.util.*;
 import java.util.logging.Logger;
 import org.wahlzeit.services.LogBuilder;
 
-@interface DesignPatternFactory{
-	 String patternName = "Factory";
-	 String[] participants = { "PhotoFactory", "LogoPhotoFactory", "Photo", "LogoPhoto"};
-}
+@PatternInstance(
+	 patternName = "Factory",
+	 participants = { "PhotoFactory", "LogoPhotoFactory", "Photo", "LogoPhoto"}
+)
 
 public class LogoPhoto extends Photo {
 	

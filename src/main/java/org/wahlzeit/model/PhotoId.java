@@ -23,10 +23,10 @@ package org.wahlzeit.model;
 import java.io.Serializable;
 import java.util.Random;
 
-@interface DesignPatternValueObject2{
-	 String patternName = "ValueObject";
-	 String[] participants = { "PhotoId"};
-}
+@PatternInstance(
+	 patternName = "ValueObject",
+	 participants = { "PhotoId"}
+)
 
 /**
  * A photo id identifies a photo with a unique number.
