@@ -5,6 +5,11 @@ import org.wahlzeit.services.LogBuilder;
 import org.wahlzeit.model.CartesianCoordinate;
 import java.util.*;
 
+@interface DesignPatternValueObject{
+	 String patternName = "ValueObject";
+	 String[] participants = { "SphericCoordinate"};
+}
+
 public class SphericCoordinate extends AbstractCoordinate{
 	
 	//logger

@@ -24,6 +24,12 @@ import org.wahlzeit.services.LogBuilder;
 
 import java.util.logging.Logger;
 
+@interface DesignPatternSingleton{
+		 String patternName = "Singleton";
+		 String[] participants = { "PhotoFactory"};
+}
+
+
 /**
  * An Abstract Factory for creating photos and related objects.
  */

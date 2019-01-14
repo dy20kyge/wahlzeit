@@ -20,6 +20,11 @@
 
 package org.wahlzeit.model;
 
+@interface DesignPatternValueObject3{
+	 String patternName = "ValueObject";
+	 String[] participants = { "CaseId"};
+}
+
 /**
  * Simple value object for case ids.
  */
