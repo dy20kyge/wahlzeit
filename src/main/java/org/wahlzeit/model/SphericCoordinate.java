@@ -7,7 +7,7 @@ import java.util.*;
 
 @PatternInstance(
 	 patternName = "ValueObject",
-	 participants = { "SphericCoordinate"}
+	 participants = { "SphericCoordinate"} 
 )
 
 public class SphericCoordinate extends AbstractCoordinate{
