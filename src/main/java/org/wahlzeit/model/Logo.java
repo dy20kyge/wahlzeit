@@ -23,7 +23,12 @@ public class Logo {
 	 */
 	public int year;
 	
-	
+	/**
+	 * @methodtype constructor
+	 */
+	public Logo(LogoType lt) {
+		this.team = lt;
+	}
 	
 	/**
 	 * @methodtype set
