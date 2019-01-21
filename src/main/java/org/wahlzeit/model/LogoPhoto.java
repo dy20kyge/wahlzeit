@@ -1,7 +1,7 @@
 
 package org.wahlzeit.model;
 
-import java.util.*;
+
 import java.util.logging.Logger;
 import org.wahlzeit.services.LogBuilder;
 
@@ -15,64 +15,29 @@ public class LogoPhoto extends Photo {
 	//logger
 	private static final Logger log = Logger.getLogger(PhotoManager.class.getName());
 	
-	/*
-	 * team name
-	 */
-	protected String name;
 	
 	/*
-	 * true if it is the Logo of an actual team, false if it is a fantasy one
+	 * a typeObject to identify the image content
 	 */
-	protected boolean realTeam;
+	protected Logo pictureContent;
 	
-	/*
-	 * the type of sport of the team of teh specified logo. i.e. Eishockey, American Football, Soccer
-	 */
-	protected String sports;
-	
-	/*
-	 * the league the team is playing in i.e. National Football League; leagueShort i.e. NFL, DEL
-	 */
-	protected String league;
-	protected String leagueShort;
-	
-	/*
-	 * the city the team is located in
-	 */
-	protected String city;
-	
-	/*
-	 * the country the team is located in
-	 */
-	protected String country;
-	
-	/*
-	 * the year the logo was designed
-	 */
-	protected int year;
 	
 	/**	
 	* @methodtype constructor
 	*/
 	public LogoPhoto() {
-		this.realTeam = false;
-		this.year = 0;
+		
 		
 	}
 	
 	/**	
 	* @methodtype constructor
 	*/
-	public LogoPhoto(String inName, boolean inRealTeam, String inSports, String inLeague,
-			String inLeagueShort, String inCity, String inCountry, int inYear){
+	public LogoPhoto(Logo inLogo, String inCity, String inCountry, int inYear){
 		
 		//preconditions arguments are checked in setters
 		try {
-			this.setName(inName);
-			this.setRealTeam(inRealTeam);
-			this.setSports(inSports);
-			this.setLeague(inLeague);
-			this.setLeagueShort(inLeagueShort);
+			this.setLogo(inLogo);
 			this.setCity(inCity);
 			this.setCountry(inCountry);
 			this.setYear(inYear); 
@@ -88,53 +53,13 @@ public class LogoPhoto extends Photo {
 	/**
 	 * @methodtype set
 	 */
-	public void setName(String inName) throws IllegalArgumentException{
+	public void setLogo(Logo inLogo) throws IllegalArgumentException{
 		//precondition
-		assertArgumentNotNull(inName);
+		assertArgumentNotNull(inLogo);
 		
-		this.name = inName;
-	}
-	 /**
-	 * @methodtype set
-	 */
-	public void setRealTeam(boolean value) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(value);
-		
-		this.realTeam = value;
-	}
-	/**	
-	* @methodtype set
-	*/
-	public void setSports(String inSport) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(inSport);
-		
-		this.sports = inSport;
+		this.pictureContent = inLogo;
 	}
 	
-	/**	
-	* @methodtype set
-	*/
-	public void setLeague(String inLeague) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(inLeague);
-		this.league = inLeague;
-	}
-	
-	/**	
-	* @methodtype set
-	*/
-	public void setLeagueShort(String inLeagueShort) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(inLeagueShort);
-		
-		if(inLeagueShort.length() > 5) {
-			//do nothing
-		} else {
-			this.leagueShort = inLeagueShort;
-		}
-	}
 	
 	/**	
 	* @methodtype set
@@ -143,7 +68,7 @@ public class LogoPhoto extends Photo {
 		//precondition
 		assertArgumentNotNull(inCity); 
 		
-		this.city = inCity;
+		pictureContent.setCity(inCity);
 	}
 	
 	/**	
@@ -153,7 +78,7 @@ public class LogoPhoto extends Photo {
 		//precondition
 		assertArgumentNotNull(inCountry);
 		
-		this.country = inCountry;
+		pictureContent.setCountry(inCountry);
 	}
 	
 	/**	
@@ -163,12 +88,7 @@ public class LogoPhoto extends Photo {
 		//precondition
 		assertArgumentNotNull(inYear);
 		
-		int currYear = Calendar.getInstance().get(Calendar.YEAR); //https://stackoverflow.com/questions/136419/get-integer-value-of-the-current-year-in-java
-		if(inYear > currYear || inYear < 0) {
-			this.year = 0;
-		}else {
-			this.year = inYear;
-		}
+		pictureContent.setYear(inYear);
 	}
 	
 	/*
@@ -179,70 +99,70 @@ public class LogoPhoto extends Photo {
 	 * @methodtype get
 	 */
 	public String getName() {
-		if(this.name == null) {
+		if(this.pictureContent.team.name == null) {
 			return "not set";
 		}
-		return this.name;
+		return this.pictureContent.team.name;
 	}
 	/**	
 	* @methodtype get
 	*/
 	public boolean isRealTeam() {
-		return this.realTeam;
+		return this.pictureContent.team.realTeam;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public String getSports() {
-		if(this.sports == null) {
+		if(this.pictureContent.team.sports == null) {
 			return "not set";
 		}
-		return this.sports;
+		return this.pictureContent.team.sports;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public String getLeague() {
-		if(this.league == null) {
+		if(this.pictureContent.team.league == null) {
 			return "not set";
 		}
-		return this.league;
+		return this.pictureContent.team.league;
 	}
 	
 	public String getLeagueShort() {
-		if(this.leagueShort == null) {
+		if(this.pictureContent.team.leagueShort == null) {
 			return "not set";
 		}
-		return this.leagueShort;
+		return this.pictureContent.team.leagueShort;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public String getCity() {
-		if(this.city == null) {
+		if(this.pictureContent.city == null) {
 			return "not set";
 		}
-		return this.city;
+		return this.pictureContent.city;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public String getCountry() {
-		if(this.country == null) {
+		if(this.pictureContent.country == null) {
 			return "not set";
 		}
-		return this.country;
+		return this.pictureContent.country;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public int getYear() {
-		return this.year;
+		return this.pictureContent.year;
 	}
 		
 	/**
