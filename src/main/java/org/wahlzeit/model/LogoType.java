@@ -1,27 +1,55 @@
 package org.wahlzeit.model;
 
+import java.util.*;
+
 public class LogoType {
+	
+	protected LogoType superType = null;
+	protected Set<LogoType> subTypes = new HashSet<LogoType>();
 	
 	/*
 	 * the name of the team
 	 */
 	public String name;
 	
-	/*
-	 * true if it is the Logo of an actual team, false if it is a fantasy one
-	 */
-	public boolean realTeam;
+	public LogoType(String inName) {
+		this.name = inName;
+	}
 	
-	/*
-	 * the type of sport of the team of teh specified logo. i.e. Eishockey, American Football, Soccer
-	 */
-	public String sports;
+	public LogoType getSuperType() {
+		return superType;
+	}
 	
-	/*
-	 * the league the team is playing in i.e. National Football League; leagueShort i.e. NFL, DEL
+	public Iterator<LogoType> getSubtypeIterator(){
+		return subTypes.iterator();
+	}
+	
+	public void addSubType(LogoType lt) {
+		 assert (lt != null) : "tried to set null sub-type";
+		 lt.setSuperType(this);
+		 subTypes.add(lt);
+	}
+	
+	public boolean hasInstance(Logo inLogo) {
+		 assert (inLogo != null) : "asked about null object";
+		 if (inLogo.getType() == this) {
+			 return true;
+		 }
+		 for (LogoType type : subTypes) {
+			 if (type.hasInstance(inLogo)) {
+				 	return true;
+			 }
+		 }
+		 return false;
+	} 
+
+	
+	/**
+	 * @methodtype constructor
 	 */
-	public String league;
-	public String leagueShort;
+	public Logo createInstance() {
+		return new Logo(this);
+	}
 	
 	/**
 	 * @methodtype set
@@ -30,85 +58,28 @@ public class LogoType {
 		assertArgumentNotNull(inName);
 		this.name = inName;
 	}
-
-
- 	/**
+	
+	/**
 	 * @methodtype set
 	 */
-	public void setRealTeam(boolean value) throws IllegalArgumentException{
-	//precondition
-	assertArgumentNotNull(value);
-	
-	this.realTeam = value;
-	}
-	/**	
-	* @methodtype set
-	*/
-	public void setSports(String inSport) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(inSport);
-		
-		this.sports = inSport;
-	}
-	
-	/**	
-	* @methodtype set
-	*/
-	public void setLeague(String inLeague) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(inLeague);
-		this.league = inLeague;
-	}
-	
-	/**	
-	* @methodtype set
-	*/
-	public void setLeagueShort(String inLeagueShort) throws IllegalArgumentException{
-		//precondition
-		assertArgumentNotNull(inLeagueShort);
-		
-		if(inLeagueShort.length() > 5) {
-			//do nothing
-		} else {
-			this.leagueShort = inLeagueShort;
-		}
+	public void setSuperType(LogoType lt) {
+		this.superType = lt;
 	}
 	
 	/**
 	 * @methodtype get
 	 */
-	public boolean getRealTeam() {
-		return this.realTeam;
+	public String getName() {
+		return this.name;
 	}
 	
 	/**
-	 * @methodtype get
-	 */
-	public String getSports() {
-		return this.sports;
-	}
-	
-	/**
-	 * @methodtype get
-	 */
-	public String getLeague() {
-		return this.league;
-	}
-	
-	/**
-	 * @methodtype get
-	 */
-	public String getLeagueShort() {
-		return this.leagueShort;
-	}
-	
-	
-	/**
-	 * @methodtype assertions
+	 * @methodtype assertion
 	 */
 	private void assertArgumentNotNull(Object o) {
 		if(o == null) {
 			throw new IllegalArgumentException("No argument provided!");
 		}
 	}
+	
 }

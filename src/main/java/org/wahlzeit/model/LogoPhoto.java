@@ -102,40 +102,40 @@ public class LogoPhoto extends Photo {
 		if(this.pictureContent.team.name == null) {
 			return "not set";
 		}
-		return this.pictureContent.team.name;
+		return this.pictureContent.getName();
 	}
 	/**	
 	* @methodtype get
 	*/
 	public boolean isRealTeam() {
-		return this.pictureContent.team.realTeam;
+		return this.pictureContent.realTeam;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public String getSports() {
-		if(this.pictureContent.team.sports == null) {
+		if(this.pictureContent.sports == null) {
 			return "not set";
 		}
-		return this.pictureContent.team.sports;
+		return this.pictureContent.sports;
 	}
 	
 	/**	
 	* @methodtype get
 	*/
 	public String getLeague() {
-		if(this.pictureContent.team.league == null) {
+		if(this.pictureContent.league == null) {
 			return "not set";
 		}
-		return this.pictureContent.team.league;
+		return this.pictureContent.league;
 	}
 	
 	public String getLeagueShort() {
-		if(this.pictureContent.team.leagueShort == null) {
+		if(this.pictureContent.leagueShort == null) {
 			return "not set";
 		}
-		return this.pictureContent.team.leagueShort;
+		return this.pictureContent.leagueShort;
 	}
 	
 	/**	
