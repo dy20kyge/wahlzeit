@@ -33,14 +33,11 @@ public class LogoPhoto extends Photo {
 	/**	
 	* @methodtype constructor
 	*/
-	public LogoPhoto(Logo inLogo, String inCity, String inCountry, int inYear){
+	public LogoPhoto(Logo inLogo){
 		
 		//preconditions arguments are checked in setters
 		try {
 			this.setLogo(inLogo);
-			this.setCity(inCity);
-			this.setCountry(inCountry);
-			this.setYear(inYear); 
 		} catch (Exception e) {
 			log.warning(LogBuilder.createSystemMessage().
 					addException("Problem with photo creation", e).toString());

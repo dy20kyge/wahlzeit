@@ -16,7 +16,7 @@ public class LogoPhotoTest{
 	private static String AF = "American Football";
 	private static String NATIONAL = "National Football League";
 	private static String NFL = "NFL";
-	private static String JAX = "Jacksonville Jaguars";
+	private String JAX = "Jacksonville Jaguars";
 	private static String JV = "Jacksonville";
 	private static String USA = "United States of America";
 	private static String NOT = "not set";
@@ -24,32 +24,12 @@ public class LogoPhotoTest{
 	@Before
 	public void init() {
 		testPhoto = new LogoPhoto();
+		//Logo testLogo = LogoManager.createLogo(JAX);
 		
 	}
 	
-	@Test
-	public void testSetAndGetValidValues() {
-		testPhoto.setName(JAX);
-		testPhoto.setRealTeam(true);
-		testPhoto.setSports(AF);
-		testPhoto.setLeague(NATIONAL);
-		testPhoto.setLeagueShort(NFL);
-		testPhoto.setCity(JV);
-		testPhoto.setCountry(USA);
-		testPhoto.setYear(2018);
-		
-		assertEquals(testPhoto.getName(), JAX);
-		assertEquals(testPhoto.isRealTeam(), true);
-		assertEquals(testPhoto.getSports(), AF);
-		assertEquals(testPhoto.getLeague(), NATIONAL);
-		assertEquals(testPhoto.getLeagueShort(), NFL);
-		assertEquals(testPhoto.getCity(), JV);
-		assertEquals(testPhoto.getCountry(), USA);
-		assertEquals(testPhoto.getYear(), 2018);
-		
-	}
 	
-	@Test
+	/*@Test
 	public void testFullConstructor() {
 		LogoPhoto completeTestPhoto = new LogoPhoto(JAX, true, AF, NATIONAL, NFL, JV, USA, 2018);
 		
@@ -61,19 +41,19 @@ public class LogoPhotoTest{
 		assertEquals(completeTestPhoto.getCity(), JV);
 		assertEquals(completeTestPhoto.getCountry(), USA);
 		assertEquals(completeTestPhoto.getYear(), 2018);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void testInvalidValues() {
 		LogoPhoto test = new LogoPhoto();
-		test.setLeagueShort("This is invalid!");
-		assertEquals(test.getLeagueShort(), "not set");
+		//test.setLeagueShort("This is invalid!");
+		//assertEquals(test.getLeagueShort(), "not set");
 		
 		test.setYear(3000);
 		assertEquals(test.getYear(), 0);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void testEmptyValues() {
 		LogoPhoto t = new LogoPhoto();
 		
@@ -85,5 +65,5 @@ public class LogoPhotoTest{
 		assertEquals(testPhoto.getCity(), NOT);
 		assertEquals(testPhoto.getCountry(), NOT);
 		assertEquals(testPhoto.getYear(), 0);
-	}
+	}*/
 }

@@ -4,8 +4,8 @@ import java.util.*;
 
 public class LogoManager {
 	
-	private static HashMap<Integer, Logo> logoMap = new HashMap<Integer, Logo>();
-	private static HashMap<String, LogoType> logoTypeMap = new HashMap<String, LogoType>();
+	private HashMap<Integer, Logo> logoMap = new HashMap<Integer, Logo>();
+	private HashMap<String, LogoType> logoTypeMap = new HashMap<String, LogoType>();
 	
 	public Logo createLogo(String typeName) {
 		 assertIsValidLogoTypeName(typeName);
