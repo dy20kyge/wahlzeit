@@ -16,16 +16,21 @@ public class LogoPhotoTest{
 	private static String AF = "American Football";
 	private static String NATIONAL = "National Football League";
 	private static String NFL = "NFL";
-	private String JAX = "Jacksonville Jaguars";
+	private static String JAX = "Jacksonville Jaguars";
 	private static String JV = "Jacksonville";
 	private static String USA = "United States of America";
 	private static String NOT = "not set";
 	
-	@Before
+	/*@Before
 	public void init() {
 		testPhoto = new LogoPhoto();
 		//Logo testLogo = LogoManager.createLogo(JAX);
 		
+	}*/
+	
+	@Test
+	public void pseudoTest() {
+		assertTrue(true);
 	}
 	
 	
