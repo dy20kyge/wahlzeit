@@ -3,6 +3,7 @@ package org.wahlzeit.model;
 
 import org.wahlzeit.services.LogBuilder;
 import java.util.logging.Logger;
+import org.wahlzeit.model.Logo;
 
 public class LogoPhotoFactory extends PhotoFactory {
 	
@@ -45,7 +46,9 @@ public class LogoPhotoFactory extends PhotoFactory {
 	 */
 	@Override
 	public LogoPhoto createPhoto() {
-		return new LogoPhoto();
+		LogoType lt = new LogoType("undefined");
+		Logo l = new Logo(lt);
+		return new LogoPhoto(l.getLogo(lt));
 	}
 
 	/**
