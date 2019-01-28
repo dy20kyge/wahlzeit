@@ -46,6 +46,10 @@ public class Logo {
 		this.team = lt;
 	}
 	
+	public Logo getLogo(LogoType lt) {
+		return lt.createInstance();
+	}
+	
 	/**
 	 * @methodtype set
 	 */
