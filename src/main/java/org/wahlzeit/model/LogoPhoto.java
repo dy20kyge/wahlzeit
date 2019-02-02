@@ -161,6 +161,13 @@ public class LogoPhoto extends Photo {
 	public int getYear() {
 		return this.pictureContent.year;
 	}
+	
+	/**
+	 * @methodtype get
+	 */
+	public Logo getLogo() {
+		return this.pictureContent;
+	}
 		
 	/**
 	 * @methodtype assertion
