@@ -12,7 +12,7 @@ public class LogoType {
 	 */
 	public String name;
 	
-	public LogoType(String inName) {
+	public LogoType(String inName) { 
 		this.name = inName;
 	}
 	
